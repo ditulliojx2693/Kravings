@@ -69,6 +69,7 @@ html{
   width: 100%;
   margin: 0;
   position: absolute;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .tab{
   background-color: #476268;
@@ -81,6 +82,7 @@ html{
   margin-bottom: 0;
   padding-left:20px;
   padding-right: 20px;
+  overflow-x:hidden;
 }
 .tab:hover{
   background-color:#34474c
