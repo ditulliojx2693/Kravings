@@ -29,7 +29,7 @@
   border-radius: 5%;
   padding-bottom:2%
 }
-#aboutUsHeader{
+.topic{
   text-align:center;
   padding-top: 50px;
 }
@@ -68,9 +68,11 @@ html{
   justify-content: flex-start;
   background-color: #476268;
   width: 100%;
-  margin: 0;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .tab{
   background-color: #476268;
@@ -88,9 +90,6 @@ html{
 .tab:hover{
   background-color:#34474c
 }
-nav{
-  margin:0;
-}
 .nav{
   margin: 0;
 }
@@ -98,4 +97,8 @@ nav{
   background-color: #f5e1da;
   border-radius: 10%;
   color: #476268;
+  margin-top: 50px;
+}
+nav{
+  margin-top:0;
 }
