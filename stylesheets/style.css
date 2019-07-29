@@ -68,7 +68,6 @@ html{
   background-color: #476268;
   width: 100%;
   margin: 0;
-  position: absolute;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .tab{
