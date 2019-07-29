@@ -94,3 +94,8 @@ nav{
 .nav{
   margin: 0;
 }
+.home{
+  background-color: #f5e1da;
+  border-radius: 10%;
+  color: #476268;
+}
