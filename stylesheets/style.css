@@ -86,6 +86,10 @@ html{
   padding-left:20px;
   padding-right: 20px;
   overflow-x:hidden;
+  overflow-y: hidden;
+  padding-top: 3%;
+  padding-bottom: 10%;
+  height: 100%;
 }
 .tab:hover{
   background-color:#34474c
@@ -97,7 +101,7 @@ html{
   background-color: #f5e1da;
   border-radius: 10%;
   color: #476268;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 nav{
   margin-top:0;
