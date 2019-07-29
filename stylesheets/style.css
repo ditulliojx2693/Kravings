@@ -31,6 +31,7 @@
 }
 #aboutUsHeader{
   text-align:center;
+  padding-top: 50px;
 }
 html{
   background-color:#40a798;
@@ -69,6 +70,7 @@ html{
   width: 100%;
   margin: 0;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  position: absolute;
 }
 .tab{
   background-color: #476268;
