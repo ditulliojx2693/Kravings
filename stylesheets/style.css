@@ -1,3 +1,40 @@
+/* header/navigation bar css */
+.header{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #476268;
+  width: 100%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.tab{
+  background-color: #476268;
+  border-style: none;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+  white-space: nowrap;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left:20px;
+  padding-right: 20px;
+  overflow-x:hidden;
+  overflow-y: hidden;
+  padding-top: 3%;
+  padding-bottom: 10%;
+  height: 100%;
+}
+.tab:hover{
+  background-color:#34474c
+}
+.nav{
+  margin: 0;
+}
+/* about us page css */
 #aboutUs{
   display:flex;
   flex-direction: row;
@@ -29,7 +66,8 @@
   border-radius: 5%;
   padding-bottom:2%
 }
-#aboutUsHeader{
+/* general css */
+.topic{
   text-align:center;
   padding-top: 50px;
 }
@@ -38,6 +76,7 @@ html{
   color: #f1f1f1;
   font-family: 'Lato', sans-serif;
 }
+/* home page css */
 .ourNames{
   text-align:center;
 }
@@ -62,40 +101,24 @@ html{
 .linkedin:hover{
   opacity:0.7;
 }
-.header{
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  background-color: #476268;
-  width: 100%;
-  margin: 0;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
-  position: absolute;
-}
-.tab{
-  background-color: #476268;
-  border-style: none;
-  color: white;
-  font-family: 'Lato', sans-serif;
-  font-size: 30px;
-  white-space: nowrap;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left:20px;
-  padding-right: 20px;
-  overflow-x:hidden;
-}
-.tab:hover{
-  background-color:#34474c
-}
-nav{
-  margin:0;
-}
-.nav{
-  margin: 0;
-}
 .home{
   background-color: #f5e1da;
-  border-radius: 10%;
+  border-radius: 3%;
   color: #476268;
+  margin-top: 50px;
+  margin-left: 3%;
+  margin-right: 3%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+#logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+#homeTitle{
+  margin-bottom:0;
+}
+nav{
+  margin-top:0;
 }
