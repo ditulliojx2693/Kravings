@@ -31,6 +31,7 @@
 }
 #aboutUsHeader{
   text-align:center;
+  padding-top: 50px;
 }
 html{
   background-color:#40a798;
@@ -68,6 +69,7 @@ html{
   background-color: #476268;
   width: 100%;
   margin: 0;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   position: absolute;
 }
 .tab{
@@ -81,14 +83,19 @@ html{
   margin-bottom: 0;
   padding-left:20px;
   padding-right: 20px;
+  overflow-x:hidden;
 }
 .tab:hover{
   background-color:#34474c
 }
 nav{
   margin:0;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .nav{
   margin: 0;
+}
+.home{
+  background-color: #f5e1da;
+  border-radius: 10%;
+  color: #476268;
 }
