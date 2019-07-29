@@ -1,67 +1,4 @@
-#aboutUs{
-  display:flex;
-  flex-direction: row;
-  justify-content:space-around;
-  color:#476268;
-  pading-bottom: 2%;
-}
-#leftAbout{
-  background-color: #f5e1da;
-  flex-grow: 1;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin-left:1%;
-  border-radius: 5%;
-  padding-bottom:2%
-}
-#middleAbout{
-  background-color: #f1f1f1;
-  flex-grow: 1;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin-left:1%;
-  border-radius: 5%;
-  padding-bottom:2%
-}
-#rightAbout{
-  background-color: #f5e1da;
-  flex-grow: 1;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin-left:1%;
-  border-radius: 5%;
-  padding-bottom:2%
-}
-.topic{
-  text-align:center;
-  padding-top: 50px;
-}
-html{
-  background-color:#40a798;
-  color: #f1f1f1;
-  font-family: 'Lato', sans-serif;
-}
-.ourNames{
-  text-align:center;
-}
-.ourPictures{
-  border-radius: 50%;
-  height:200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.linkedin{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height:40px;
-  border-radius: 10%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-.bios{
-  text-align:center
-}
-.linkedin:hover{
-  opacity:0.7;
-}
+/* header/navigation bar css */
 .header{
   display:flex;
   flex-direction: row;
@@ -97,11 +34,90 @@ html{
 .nav{
   margin: 0;
 }
+/* about us page css */
+#aboutUs{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-around;
+  color:#476268;
+  pading-bottom: 2%;
+}
+#leftAbout{
+  background-color: #f5e1da;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-left:1%;
+  border-radius: 5%;
+  padding-bottom:2%
+}
+#middleAbout{
+  background-color: #f1f1f1;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-left:1%;
+  border-radius: 5%;
+  padding-bottom:2%
+}
+#rightAbout{
+  background-color: #f5e1da;
+  flex-grow: 1;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-left:1%;
+  border-radius: 5%;
+  padding-bottom:2%
+}
+/* general css */
+.topic{
+  text-align:center;
+  padding-top: 50px;
+}
+html{
+  background-color:#40a798;
+  color: #f1f1f1;
+  font-family: 'Lato', sans-serif;
+}
+/* home page css */
+.ourNames{
+  text-align:center;
+}
+.ourPictures{
+  border-radius: 50%;
+  height:200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.linkedin{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height:40px;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.bios{
+  text-align:center
+}
+.linkedin:hover{
+  opacity:0.7;
+}
 .home{
   background-color: #f5e1da;
-  border-radius: 10%;
+  border-radius: 3%;
   color: #476268;
-  margin-top: 60px;
+  margin-top: 50px;
+  margin-left: 3%;
+  margin-right: 3%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+#logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+#homeTitle{
+  margin-bottom:0;
 }
 nav{
   margin-top:0;
