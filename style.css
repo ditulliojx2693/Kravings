@@ -1,1 +1,13 @@
-
+#aboutUs{
+  display:grid;
+  grid-column: 1fr 1fr 1fr;
+}
+#leftAbout{
+  background-color: #f5e1da;
+}
+#middleAbout{
+  background-color: #e8e2db;
+}
+#rightAbout{
+  background-color: #f5e1da;
+}
