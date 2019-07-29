@@ -11,7 +11,6 @@ class HomePage(webapp2.RequestHandler):
     def get(self):  # for a get request
         home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())  # the response
-        self.response.write("homepage working")
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
