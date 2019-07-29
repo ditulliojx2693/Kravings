@@ -64,12 +64,11 @@ html{
 .header{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   background-color: #476268;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   position: absolute;
-  box-sizing: border-box;
 }
 .tab{
   background-color: #476268;
@@ -80,6 +79,8 @@ html{
   white-space: nowrap;
   margin-top: 0;
   margin-bottom: 0;
+  padding-left:20px;
+  padding-right: 20px;
 }
 .tab:hover{
   background-color:#34474c
@@ -89,6 +90,5 @@ nav{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .nav{
-  padding: 2%;
-  padding-left: 30%
+  margin: 0;
 }
