@@ -38,6 +38,23 @@ nav{
   margin: 0;
 }
 
+/* footer */
+
+.footer{
+  background-color: #476268;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right:0;
+  bottom: 0;
+  margin-top:40px;
+}
+.footerText{
+  font-size: 10px;
+  text-align: right;
+  padding-right: 1%;
+  padding-bottom: 0;
+}
 /* about us page css */
 
 #aboutUs{
@@ -75,6 +92,7 @@ nav{
 .topic{
   text-align:center;
   padding-top: 50px;
+  min-height: 100%;
 }
 html{
   background-color:#40a798;
