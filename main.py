@@ -25,7 +25,6 @@ class QuizPage(webapp2.RequestHandler):
         }
 
         self.response.write(quiz_template.render(questions_dict))  # the response
-        self.response.write("quiz working")
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
