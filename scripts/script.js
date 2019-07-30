@@ -56,6 +56,10 @@ function ifChecked () {
     alert("You forgot a box!");
   }
   else{
+<<<<<<< HEAD
+    
+=======
     quiz[0].submit();
+>>>>>>> 238ca47b0bd1dd6d1ba1b08ce3447c00ab58189e
   };
  }
