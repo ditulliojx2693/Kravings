@@ -13,6 +13,16 @@ class HomePage(webapp2.RequestHandler):
         home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())  # the response
 
+class LoginPage(webapp2.RequestHandler):
+    def get(self):
+        login_template = the_jinja_env.get_template('templates/login.html')
+        self.response.write(login_template.render())  # the response
+
+class SignUpPage(webapp2.RequestHandler):
+    def get(self):
+        signup_template = the_jinja_env.get_template('templates/signup.html')
+        self.response.write(signup_template.render())  # the response
+
 class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
@@ -69,6 +79,8 @@ class YelpPage(webapp2.RequestHandler):
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomePage),
+    ('/signup', SignUpPage),
+    ('/login', LoginPage),
     ('/quiz', QuizPage),
     ('/results', ResultsPage),
     ('/aboutus', AboutUsPage),

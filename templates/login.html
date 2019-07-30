@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Results</title>
+    <title>Home</title>
     <link rel="stylesheet" href="stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <style media="screen">
@@ -11,23 +11,20 @@
       }
     </style>
   </head>
+<!-- header is here -->
   <nav>
     <div class="header">
       <form action="/"><button type="submit" class="tab">Home</button></form>
       <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
       <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
-      <form action="/login"><button type = "submit" class="tab" id ="loginButton"  >Log In</button></form>
+      <form action="/login"><button type = "submit" class="tab" id ="loginButton" >Log In</button></form>
     </div>
   </nav>
   <body>
     <div class="home">
-      <h1 class="topic">You got...</h1>
-      <img src="{{img}}" alt="food_image" class="foodDisplay">
-      <center><h2 style="padding-bottom: 40px;">{{fooditem}}!</h2></center>
-      <center><h3>Click to Find Somewhere to Get {{fooditem}}</h3></center>
-      <center><h3 style="padding-bottom:40px"> Don't like your answer? Try our randomizer! </h3></center>
     </div>
   </body>
+<!-- footer is here -->
   <div class="footer">
     <p class="footerText">Google CSSI 2019</p>
   </div>
