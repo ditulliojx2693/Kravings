@@ -5,6 +5,11 @@
     <title>Results</title>
     <link rel="stylesheet" href="stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <style media="screen">
+      html{
+        background-image:url("images/background.jpg");
+      }
+    </style>
   </head>
   <nav>
     <div class="header">
@@ -14,9 +19,15 @@
     </div>
   </nav>
   <body>
-
+    <div class="home">
+      <h1 class="topic">You got...</h1>
+      <img src="{{img}}" alt="food_image" class="foodDisplay">
+      <p class="homeText">{{fooditem}}!</p>
+      <center><h3>Click to Find Somewhere to Get {{fooditem}}</h3></center>
+      <center><h3> Don't like your answer? Try our randomizer! </h3></center>
+    </div>
   </body>
   <div class="footer">
-    <p class="footerText" style="font-family: 'Lato', sans-serif;">Google CSSI 2019</p>
+    <p class="footerText">Google CSSI 2019</p>
   </div>
 </html>

@@ -63,7 +63,6 @@ nav{
   flex-direction: row;
   justify-content:space-around;
   color:#476268;
-  pading-bottom: 2%;
 }
 #leftAbout{
   background-color: #f5e1da;
@@ -90,21 +89,6 @@ nav{
   padding-bottom:2%
 }
 
-/* general css */
-
-.topic{
-  text-align:center;
-  padding-top: 50px;
-  min-height: 100%;
-}
-html{
-  background-color:#40a798;
-  color: #f1f1f1;
-  font-family: 'Lato', sans-serif;
-}
-
-/* home page css */
-
 .ourNames{
   text-align:center;
 }
@@ -124,27 +108,39 @@ html{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .bios{
-  text-align:center
+  text-align:center;
+  padding-left:2%;
+  padding-right: 2%;
 }
 .linkedin:hover{
   opacity:0.7;
 }
-.home{
-  background-color: #f5e1da;
-  border-radius: 5%;
-  color: #476268;
-  margin-top: 70px;
-  margin-left: 3%;
-  margin-right: 3%;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
-  overflow-y: scroll;
+
+/* general css */
+
+.topic{
+  text-align:center;
+  padding-top: 50px;
+  min-height: 100%;
 }
+html{
+  background-image:url("images/background.jpg");
+  color: #f1f1f1;
+  font-family: 'Lato', sans-serif;
+}
+/* home page css*/
+
 #logo{
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   padding-bottom: 1%;
+  border-radius: 30%;
+  /*box-shadow: inset 0px 40px 20px #f9da66,
+    inset -20px 40px 20px #f9da66,
+    0px 0px 40px 20px #f9da66;*/
+
 }
 .homeText{
   margin-left: 5%;
@@ -165,4 +161,48 @@ html{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   margin-bottom: 6%;
   padding: 10px;
+}
+#quiz:hover{
+  background-color:#318175;
+}
+.home{
+  background-color: #f5e1da;
+  border-radius: 5%;
+  color: #476268;
+  margin-top: 70px;
+  margin-left: 3%;
+  margin-right: 3%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  overflow-y: scroll;
+}
+
+/* quiz page css */
+
+.quiz{
+  padding-top: 2%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.submit{
+  background-color:#476268;
+  border-style:none;
+  color: #F1F1F1;
+  font-size: 20px;
+  display: block;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: auto;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  margin-bottom: 6%;
+  padding: 10px;
+}
+.q{
+  font-size: 18px;
+  padding-top: 2%;
+}
+.foodDisplay{
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
 }

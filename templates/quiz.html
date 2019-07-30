@@ -5,6 +5,11 @@
     <title>Food Quiz</title>
     <link rel="stylesheet" href="stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <style media="screen">
+      html{
+        background-image:url("images/background.jpg");
+      }
+    </style>
   </head>
   <nav>
     <div class="header">
@@ -15,24 +20,54 @@
   </nav>
   <body>
     <br>
-    <form action="quiz.html"><br>
-    <p> {{q1}} </p>
-      <input type="radio" name="burger" value="1"> 1<br>
-      <input type="radio" name="burger" value="2"> 2<br>
-      <input type="radio" name="burger" value="3"> 3<br>
-      <input type="radio" name="burger" value="4"> 4<br>
-      <input type="radio" name="burger" value="5"> 5<br>
-    <br>
+    <form action= "/results" class="quiz" method="post"><br>
+    <p class = "q"> 1. {{q1}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="burger1" value="1">
+      <input type="radio" name="burger1" value="2">
+      <input type="radio" name="burger1" value="3">
+      <input type="radio" name="burger1" value="4">
+      <input type="radio" name="burger1" value="5"> Strongly Agree
+    </div>
+    <p class="q"> 2. {{q2}} </p>
+  <div class="question">
+    Strongly Disagree <input type="radio" name="ice_cream1" value="1">
+    <input type="radio" name="ice_cream1" value="2">
+    <input type="radio" name="ice_cream1" value="3">
+    <input type="radio" name="ice_cream1" value="4">
+    <input type="radio" name="ice_cream1" value="5"> Strongly Agree
+    </div>
+    <p class = "q"> 3. {{q3}} </p>
+  <div class="question">
+    Strongly Disagree <input type="radio" name="tofu1" value="1">
+    <input type="radio" name="tofu1" value="2">
+    <input type="radio" name="tofu1" value="3">
+    <input type="radio" name="tofu1" value="4">
+    <input type="radio" name="tofu1" value="5"> Strongly Agree
+  </div>
 
-    <p> {{q2}} </p>
-      <input type="radio" name="ice cream" value="1"> 1<br>
-      <input type="radio" name="ice cream" value="2"> 2<br>
-      <input type="radio" name="ice cream" value="3"> 3<br>
-      <input type="radio" name="ice cream" value="4"> 4<br>
-      <input type="radio" name="ice cream" value="5"> 5<br>
-    </form>
+    <p class = "q"> 4. {{q4}} </p>
+  <div class="question">
+    Strongly Disagree <input type="radio" name="beef1" value="1">
+    <input type="radio" name="beef1" value="2">
+    <input type="radio" name="beef1" value="3">
+    <input type="radio" name="beef1" value="4">
+    <input type="radio" name="beef1" value="5"> Strongly Agree
+  </div>
+  <!-- need javascript so it doesnt destroy the page when you forget a value-->
+  <!-- need python so it can figure out what to do when 2 are tied? ranodmize which is shown-->
+    <p class="q"> 5. {{q5}} </p>
+  <div class="question">
+    Strongly Disagree <input type="radio" name="seafood1" value="1">
+    <input type="radio" name="seafood1" value="2">
+    <input type="radio" name="seafood1" value="3">
+    <input type="radio" name="seafood1" value="4">
+    <input type="radio" name="seafood1" value="5"> Strongly Agree
+  </div>
+    <button type="submit" class="submit" onclick="onClick()">Finish Survey!</button>
+  </form>
   </body>
   <div class="footer">
-    <p class="footerText" style="font-family: 'Lato', sans-serif;">Google CSSI 2019</p>
+    <p class="footerText">Google CSSI 2019</p>
   </div>
 </html>

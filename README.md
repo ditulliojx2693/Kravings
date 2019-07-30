@@ -1,2 +1,2 @@
-# cssi19-final-project
-Cssi 2019 final project
+# CSSI 2019 Final Project
+By Jason, Hannah, and Isaac
