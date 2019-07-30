@@ -24,8 +24,8 @@
     </div>
   </nav>
   <body>
-    <br>
-    <form action= "/results" class="quiz" method="post"><br>
+  <br>
+  <form action= "/results" class="quiz" method="post"><br>
     <p class = "q"> 1. {{q1}} </p>
     <div class="question">
       Strongly Disagree <input type="radio" name="burger1" value="1">
@@ -35,40 +35,79 @@
       <input class="input" type="radio" name="burger1" value="5"> Strongly Agree
     </div>
     <p class="q"> 2. {{q2}} </p>
-  <div class="question">
-    Strongly Disagree <input type="radio" name="ice_cream1" value="1">
-    <input class="input" type="radio" name="ice_cream1" value="2">
-    <input class="input" type="radio" name="ice_cream1" value="3">
-    <input class="input" type="radio" name="ice_cream1" value="4">
-    <input class="input" type="radio" name="ice_cream1" value="5"> Strongly Agree
+    <div class="question">
+      Strongly Disagree <input type="radio" name="ice_cream1" value="1">
+      <input class="input" type="radio" name="ice_cream1" value="2">
+      <input class="input" type="radio" name="ice_cream1" value="3">
+      <input class="input" type="radio" name="ice_cream1" value="4">
+      <input class="input" type="radio" name="ice_cream1" value="5"> Strongly Agree
+      </div>
+      <p class = "q"> 3. {{q3}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="tofu1" value="1">
+      <input class="input" type="radio" name="tofu1" value="2">
+      <input class="input" type="radio" name="tofu1" value="3">
+      <input class="input" type="radio" name="tofu1" value="4">
+      <input class="input" type="radio" name="tofu1" value="5"> Strongly Agree
     </div>
-    <p class = "q"> 3. {{q3}} </p>
-  <div class="question">
-    Strongly Disagree <input type="radio" name="tofu1" value="1">
-    <input class="input" type="radio" name="tofu1" value="2">
-    <input class="input" type="radio" name="tofu1" value="3">
-    <input class="input" type="radio" name="tofu1" value="4">
-    <input class="input" type="radio" name="tofu1" value="5"> Strongly Agree
-  </div>
-
-    <p class = "q" id = "beef"> 4. {{q4}} </p>
-  <div class="question">
-    Strongly Disagree <input type="radio" name="beef1" value="1">
-    <input class="input" type="radio" name="beef1" value="2">
-    <input class="input" type="radio" name="beef1" value="3">
-    <input class="input" type="radio" name="beef1" value="4">
-    <input class="input" type="radio" name="beef1" value="5"> Strongly Agree
-  </div>
-  <!-- need javascript so it doesnt destroy the page when you forget a value-->
-  <!-- need python so it can figure out what to do when 2 are tied? ranodmize which is shown-->
-    <p class="q"> 5. {{q5}} </p>
-  <div class="question">
-    Strongly Disagree <input type="radio" name="seafood1" value="1">
-    <input class="input" type="radio" name="seafood1" value="2">
-    <input class="input" type="radio" name="seafood1" value="3">
-    <input class="input" type="radio" name="seafood1" value="4">
-    <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
-  </div>
+      <p class = "q"> 4. {{q4}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="beef1" value="1">
+      <input class="input" type="radio" name="beef1" value="2">
+      <input class="input" type="radio" name="beef1" value="3">
+      <input class="input" type="radio" name="beef1" value="4">
+      <input class="input" type="radio" name="beef1" value="5"> Strongly Agree
+    </div>
+    <!-- need javascript so it doesnt destroy the page when you forget a value-->
+    <!-- need python so it can figure out what to do when 2 are tied? ranodmize which is shown-->
+      <p class="q"> 5. {{q5}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
+      <p class="q"> 6. {{q6}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
+      <p class="q"> 7. {{q7}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
+      <p class="q"> 8. {{q8}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
+      <p class="q"> 9. {{q9}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
+      <p class="q"> 10. {{q10}} </p>
+    <div class="question">
+      Strongly Disagree <input type="radio" name="seafood1" value="1">
+      <input class="input" type="radio" name="seafood1" value="2">
+      <input class="input" type="radio" name="seafood1" value="3">
+      <input class="input" type="radio" name="seafood1" value="4">
+      <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
+    </div>
     <button type="button" class="submit" onclick="ifChecked()">Finish Survey!</button>
   </form>
   </body>
