@@ -68,11 +68,11 @@ class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
         questions_dict = {
-            "q1": "Do you want a burger?",
-            "q2": "Do you want ice cream?",
-            "q3": "Do you want tofu?",
-            "q4": "Are you looking for beef?",
-            "q5": "Do you want seafood?",
+            "q1": "Do you want something savory?",
+            "q2": "Do you want something sweet?",
+            "q3": "Are you interested in trying something healthy?",
+            "q4": "Are you looking for mainly meat?",
+            "q5": "Would you like an alternative to meat?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
