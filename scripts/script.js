@@ -13,10 +13,7 @@ function ifChecked () {
     }
     else{
       falseCount1 += 1;
-    }
-    if (falseCount1 == input1.length){
-      alert("You forgot a box!");
-    };}
+    }};
   let falseCount2 = 0;
   for (b = 0; b < input2.length; b++){
     let check2 = input2[b].checked;
@@ -25,10 +22,8 @@ function ifChecked () {
     }
     else{
       falseCount2 += 1;
-    }
-    if (falseCount2 == input2.length){
-      alert("You forgot a box!");
-    };}
+    }};
+    //something here broken
     let falseCount3 = 0;
     for (c = 0; c < input3.length; c++){
       let check3 = input3[c].checked;
@@ -37,22 +32,16 @@ function ifChecked () {
       }
       else{
         falseCount3 += 1;
-      }
-      if (falseCount3 == input3.length){
-        alert("You forgot a box!");
-      }}
+      }};
   let falseCount4 = 0;
   for (d = 0; d < input4.length; d++){
-    let check4 = input4[b].checked;
+    let check4 = input4[d].checked;
     if (check4){
       break
     }
     else{
       falseCount4 += 1;
-    }
-    if (falseCount4 == input4.length){
-      alert("You forgot a box!");
-    }; };
+    } };
   let falseCount5 = 0;
   for (e = 0; e < input5.length; e++){
     let check5 = input5[e].checked;
@@ -62,7 +51,11 @@ function ifChecked () {
     else{
       falseCount5 += 1;
     }
-    if (falseCount5 == input5.length){
-      alert("You forgot a box!");
-    };
-  }; }
+  };
+  if (falseCount1 == input1.length || falseCount2 == input2.length || falseCount3 == input3.length || falseCount4 == input4.length || falseCount5 == input5.length){
+    alert("You forgot a box!");
+  }
+  else{
+    
+  };
+ }
