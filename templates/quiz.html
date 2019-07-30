@@ -13,12 +13,9 @@
       <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
     </div>
   </nav>
-  <script type="text/javascript">
-    //enter functionality so that if they dont select an option,,, a popup says they forgot one
-  </script>
   <body>
     <br>
-    <form action="/results" class="quiz" method="post"><br>
+    <form action= "/results" class="quiz" method="post"><br>
     <p class = "q"> 1. {{q1}} </p>
     <div class="question">
       Strongly Disagree <input type="radio" name="burger1" value="1">
@@ -52,7 +49,7 @@
     <input type="radio" name="beef1" value="4">
     <input type="radio" name="beef1" value="5"> Strongly Agree
   </div>
-
+  <!-- need javascript so it doesnt destroy the page when you forget a value-->
     <p class="q"> 5. {{q5}} </p>
   <div class="question">
     Strongly Disagree <input type="radio" name="seafood1" value="1">
@@ -61,7 +58,7 @@
     <input type="radio" name="seafood1" value="4">
     <input type="radio" name="seafood1" value="5"> Strongly Agree
   </div>
-    <button type="submit" class="submit">Finish Survey!</button>
+    <button type="submit" class="submit" onclick="onClick()">Finish Survey!</button>
   </form>
   </body>
   <div class="footer">
