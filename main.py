@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import urlfetch
+from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -79,38 +80,51 @@ class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
         questions_dict = {
-            "q1": "Do you want a burger?",
-            "q2": "Do you want ice cream?",
-            "q3": "Do you want tofu?",
-            "q4": "Are you looking for beef?",
-            "q5": "Do you want seafood?",
+            "q1": "Do you want something savory?",
+            "q2": "Do you want something sweet?",
+            "q3": "Are you interested in trying something healthy?",
+            "q4": "Are you looking for mainly meat?",
+            "q5": "Would you like an alternative to meat?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
+
 class ResultsPage(webapp2.RequestHandler):
-    def post(self):  # for a get request
+    def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
         burger_count = int(self.request.get("burger1"))
         dessert_count = int(self.request.get("ice_cream1"))
         tofu_count = int(self.request.get("tofu1"))
-        beef_count = int(self.request.get("beef1"))
+        indian_count = int(self.request.get("beef1"))
         seafood_count = int(self.request.get("seafood1"))
         fooditem = ""
         img = ""
-        if burger_count > dessert_count and burger_count > tofu_count and burger_count > beef_count and burger_count > seafood_count:
+        if burger_count > dessert_count and burger_count > tofu_count and burger_count > indian_count and burger_count > seafood_count:
             img = "images/burger.png"
             fooditem = "A Burger"
-        elif dessert_count > burger_count and dessert_count > tofu_count and dessert_count > beef_count and dessert_count > seafood_count:
+        elif dessert_count > burger_count and dessert_count > tofu_count and dessert_count > indian_count and dessert_count > seafood_count:
             img = "images/ice_cream.png"
             fooditem = "Ice Cream"
-        elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > beef_count and tofu_count > seafood_count:
+        elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > indian_count and tofu_count > seafood_count:
             img = "images/tofu.png"
             fooditem = "Tofu"
-        elif beef_count > burger_count and beef_count > dessert_count and beef_count > tofu_count and beef_count > seafood_count:
-            img = "images/beef.jpg"
-            fooditem = "Beef"
-        elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > beef_count:
+        elif indian_count > burger_count and indian_count > dessert_count and indian_count > tofu_count and indian_count > seafood_count:
+            img = "images/indian.png"
+            fooditem = "Indian Food"
+        elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > indian_count:
             img ="https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
             fooditem = "Seafood"
+        elif burger_count == dessert_count:
+            img = "images/fries.png"
+            fooditem = "Fries"
+        elif burger_count == tofu_count:
+            img = "images/veggie.png"
+            fooditem = "Veggie Burger"
+        elif burger_count == indian_count:
+            img = "images/chinese.png"
+            fooditem = "Chinese Food"
+        elif burger_count == seafood_count:
+            img = "images/taco.png"
+            fooditem = "Fish Taco"
         food_display_dict = {
             "img": img,
             "fooditem": fooditem

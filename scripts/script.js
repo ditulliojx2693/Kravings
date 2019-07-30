@@ -1,10 +1,10 @@
-
 function ifChecked () {
   let input1 = document.getElementsByName('burger1');
   let input2 = document.getElementsByName('ice_cream1');
   let input3 = document.getElementsByName('tofu1');
   let input4 = document.getElementsByName('beef1');
   let input5 = document.getElementsByName('seafood1');
+  let quiz = document.getElementsByClassName('quiz');
   let falseCount1 = 0;
   for (a = 0; a < input1.length; a++){
     let check1 = input1[a].checked;
@@ -56,6 +56,10 @@ function ifChecked () {
     alert("You forgot a box!");
   }
   else{
+<<<<<<< HEAD
     
+=======
+    quiz[0].submit();
+>>>>>>> 238ca47b0bd1dd6d1ba1b08ce3447c00ab58189e
   };
  }
