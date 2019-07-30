@@ -76,10 +76,6 @@ class QuizPage(webapp2.RequestHandler):
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
-    def post(self):
-        print("hello from python!")
-        #redirect(url_for('/results'))
-
 class ResultsPage(webapp2.RequestHandler):
     def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
