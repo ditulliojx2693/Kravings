@@ -2,13 +2,10 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import urlfetch
-<<<<<<< HEAD
 from flask import Flask
-=======
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
->>>>>>> 29865a65090b1a28f5c10e94b56a63ee7271a23c
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
