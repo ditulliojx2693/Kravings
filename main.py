@@ -5,7 +5,6 @@ from google.appengine.api import urlfetch
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -28,40 +27,53 @@ class LoginPage(webapp2.RequestHandler):
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
         signup_template = the_jinja_env.get_template('templates/signup.html')
-    def session(self):
-        return self.session_store.get_session()
-    def isLoggedIn(self):
-        if self.session.get('username') == "":
-            return False
-        return True
+        self.response.write(signup_template.render())
     def get(self):
-                if self.isLoggedIn():
-                    self.redirect("/aboutus")
-                else:
-                    self.response.write(welcome_template.render())
+      user = users.get_current_user()
+      # If the user is logged in...
+      if user:
+        email_address = user.nickname()
+        cssi_user = CssiUser.get_by_id(user.user_id())
+        signout_link_html = '<a href="%s">sign out</a>' % (
+            users.create_logout_url('/'))
+        # If the user has previously been to our site, we greet them!
+        if cssi_user:
+          self.response.write('''
+              Welcome %s %s (%s)! <br> %s <br>''' % (
+                cssi_user.first_name,
+                cssi_user.last_name,
+                email_address,
+                signout_link_html))
+        # If the user hasn't been to our site, we ask them to sign up
+        else:
+          self.response.write('''
+              Welcome to our site, %s!  Please sign up! <br>
+              <form method="post" action="/">
+              <input type="text" name="first_name">
+              <input type="text" name="last_name">
+              <input type="submit">
+              </form><br> %s <br>
+              ''' % (email_address, signout_link_html))
+      # Otherwise, the user isn't logged in!
+      else:
+        self.response.write('''
+          Please log in to use our site! <br>
+          <a href="%s">Sign in</a>''' % (
+            users.create_login_url('/home')))
 
     def post(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('templates/signup.html')
-
-        d = {
-            'phrase': 'Incorrect password or username'
-        }
-
-        username = self.request.get('welcome_username')
-        password = self.request.get('welcome_password')
-        user_info = User.query().filter(username == User.username).fetch()
-
-        if(len(user_info)>0):
-            if password == user_info[0].password:
-                self.redirect("/home")
-                self.session['username'] = username
-            else:
-                self.response.write(welcome_template.render(d))
-
-        else:
-            self.response.write(welcome_template.render(d))
-
-        self.response.write(signup_template.render())  # the response
+      user = users.get_current_user()
+      if not user:
+        # You shouldn't be able to get here without being logged in
+        self.error(500)
+        return
+      cssi_user = CssiUser(
+          first_name=self.request.get('first_name'),
+          last_name=self.request.get('last_name'),
+          id=user.user_id())
+      cssi_user.put()
+      self.response.write('Thanks for signing up, %s!' %
+          cssi_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
