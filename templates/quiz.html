@@ -7,12 +7,31 @@
   </head>
   <nav>
     <div class="header">
-      <div class="nav"><form action="/"><button type="submit" class="tab">Home</button></form></div>
-      <div class="nav"><form action="/aboutus" ><button type="submit" class="tab">About Us</button></form></div>
-      <div class="nav"><form action="/results" ><button type="submit" class="tab">Results</button></form></div>
+      <form action="/"><button type="submit" class="tab">Home</button></form>
+      <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
+      <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
     </div>
   </nav>
   <body>
-
+    <br>
+    <form action="quiz.html"><br>
+    <p> {{q1}} </p>
+      <input type="radio" name="burger" value="1"> 1<br>
+      <input type="radio" name="burger" value="2"> 2<br>
+      <input type="radio" name="burger" value="3"> 3<br>
+      <input type="radio" name="burger" value="4"> 4<br>
+      <input type="radio" name="burger" value="5"> 5<br>
+    <br>
+    
+    <p> {{q2}} </p>
+      <input type="radio" name="ice cream" value="1"> 1<br>
+      <input type="radio" name="ice cream" value="2"> 2<br>
+      <input type="radio" name="ice cream" value="3"> 3<br>
+      <input type="radio" name="ice cream" value="4"> 4<br>
+      <input type="radio" name="ice cream" value="5"> 5<br>
+    </form>
   </body>
+  <div class="footer">
+    <p class="footerText" style="font-family: 'Lato', sans-serif;">Google CSSI 2019</p>
+  </div>
 </html>
