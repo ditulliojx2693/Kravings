@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+from google.appengine.api import urlfetch
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
