@@ -1,10 +1,3 @@
-function submit() {
-  let http = new XMLHttpRequest();
-  let url = '/quiz';
-  http.open('POST', url, true);
-  http.send();
-  //Send the proper header information along with the request
-}
 function ifChecked () {
   let input1 = document.getElementsByName('burger1');
   let input2 = document.getElementsByName('ice_cream1');
@@ -63,6 +56,6 @@ function ifChecked () {
     alert("You forgot a box!");
   }
   else{
-    submit();
+    quiz[0].submit();
   };
  }
