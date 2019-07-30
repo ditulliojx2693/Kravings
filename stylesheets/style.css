@@ -63,7 +63,6 @@ nav{
   flex-direction: row;
   justify-content:space-around;
   color:#476268;
-  pading-bottom: 2%;
 }
 #leftAbout{
   background-color: #f5e1da;
@@ -129,16 +128,6 @@ html{
 .linkedin:hover{
   opacity:0.7;
 }
-.home{
-  background-color: #f5e1da;
-  border-radius: 5%;
-  color: #476268;
-  margin-top: 70px;
-  margin-left: 3%;
-  margin-right: 3%;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
-  overflow-y: scroll;
-}
 #logo{
   display: block;
   margin-left: auto;
@@ -165,4 +154,14 @@ html{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   margin-bottom: 6%;
   padding: 10px;
+}
+.home{
+  background-color: #f5e1da;
+  border-radius: 5%;
+  color: #476268;
+  margin-top: 70px;
+  margin-left: 3%;
+  margin-right: 3%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  overflow-y: scroll;
 }
