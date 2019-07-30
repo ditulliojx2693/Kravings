@@ -17,6 +17,7 @@
       <form action="/"><button type="submit" class="tab">Home</button></form>
       <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
       <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
+      <form action="/login"><button type = "submit" class="tab" id ="loginButton" >Log In</button></form>
     </div>
   </nav>
   <body>
@@ -47,7 +48,7 @@
     <input class="input" type="radio" name="tofu1" value="5"> Strongly Agree
   </div>
 
-    <p class = "q"> 4. {{q4}} </p>
+    <p class = "q" id = "beef"> 4. {{q4}} </p>
   <div class="question">
     Strongly Disagree <input type="radio" name="beef1" value="1">
     <input class="input" type="radio" name="beef1" value="2">
@@ -65,7 +66,7 @@
     <input class="input" type="radio" name="seafood1" value="4">
     <input class="input" type="radio" name="seafood1" value="5"> Strongly Agree
   </div>
-    <button type="submit" class="submit" onclick="ifChecked()">Finish Survey!</button>
+    <button type="button" class="submit" onclick="ifChecked()">Finish Survey!</button>
   </form>
   </body>
   <div class="footer">
