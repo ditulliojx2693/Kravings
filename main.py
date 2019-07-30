@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import urlfetch
+from flask import Flask
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -34,8 +35,13 @@ class QuizPage(webapp2.RequestHandler):
             "q5": "Do you want seafood?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
+
+    def post(self):
+        print("hello from python!")
+        #redirect(url_for('/results'))
+
 class ResultsPage(webapp2.RequestHandler):
-    def post(self):  # for a get request
+    def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
         burger_count = int(self.request.get("burger1"))
         dessert_count = int(self.request.get("ice_cream1"))

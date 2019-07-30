@@ -1,10 +1,17 @@
-
+function submit() {
+  let http = new XMLHttpRequest();
+  let url = '/quiz';
+  http.open('POST', url, true);
+  http.send();
+  //Send the proper header information along with the request
+}
 function ifChecked () {
   let input1 = document.getElementsByName('burger1');
   let input2 = document.getElementsByName('ice_cream1');
   let input3 = document.getElementsByName('tofu1');
   let input4 = document.getElementsByName('beef1');
   let input5 = document.getElementsByName('seafood1');
+  let quiz = document.getElementsByClassName('quiz');
   let falseCount1 = 0;
   for (a = 0; a < input1.length; a++){
     let check1 = input1[a].checked;
@@ -56,6 +63,6 @@ function ifChecked () {
     alert("You forgot a box!");
   }
   else{
-    
+    submit();
   };
  }
