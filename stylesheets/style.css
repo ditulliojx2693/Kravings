@@ -123,7 +123,9 @@ html{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .bios{
-  text-align:center
+  text-align:center;
+  padding-left:2%;
+  padding-right: 2%;
 }
 .linkedin:hover{
   opacity:0.7;
