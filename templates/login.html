@@ -14,12 +14,29 @@
 <!-- header is here -->
   <nav>
     <div class="header">
-      <form action="/"><button type="submit" class="tab">Home</button></form>
+      <form action="/home"><button type="submit" class="tab">Home</button></form>
       <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
       <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
       <form action="/login"><button type = "submit" class="tab" id ="loginButton" >Log In</button></form>
     </div>
   </nav>
+  <div id = "createAccountBox">
+      <form class="" action="/createAccount" method="post">
+        <h2>First Name </h2>
+        <input type="text" name="FirstName" placeholder="First Name" value = "">
+        <br>
+        <h2>Last Name</h2>
+        <input type="text" name="LastName" placeholder="Last Name" value = "">
+        <br>
+        <h2>Username</h2>
+        <input type="text" name="Username" placeholder="Username" value = "">
+        <br>
+        <h2>Password</h2>
+        <input type="password" name="Password" placeholder="Password" value = "">
+        <br> <br>
+        <input type="submit" name="Create" value="Create" id = "create">
+        <p id = "incorrect">{{exists}}</p>
+    </div>
   <body>
     <div class="home">
     </div>
