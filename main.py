@@ -2,11 +2,17 @@ import webapp2
 import jinja2
 import os
 from google.appengine.api import urlfetch
+from google.appengine.api import users
+from google.appengine.ext import ndb
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
+class CssiUser(ndb.Model):
+  first_name = ndb.StringProperty()
+  last_name = ndb.StringProperty()
 
 class HomePage(webapp2.RequestHandler):
     def get(self):  # for a get request
@@ -21,6 +27,39 @@ class LoginPage(webapp2.RequestHandler):
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
         signup_template = the_jinja_env.get_template('templates/signup.html')
+    def session(self):
+        return self.session_store.get_session()
+    def isLoggedIn(self):
+        if self.session.get('username') == "":
+            return False
+        return True
+    def get(self):
+                if self.isLoggedIn():
+                    self.redirect("/aboutus")
+                else:
+                    self.response.write(welcome_template.render())
+
+    def post(self):
+        welcome_template = JINJA_ENVIRONMENT.get_template('templates/signup.html')
+
+        d = {
+            'phrase': 'Incorrect password or username'
+        }
+
+        username = self.request.get('welcome_username')
+        password = self.request.get('welcome_password')
+        user_info = User.query().filter(username == User.username).fetch()
+
+        if(len(user_info)>0):
+            if password == user_info[0].password:
+                self.redirect("/home")
+                self.session['username'] = username
+            else:
+                self.response.write(welcome_template.render(d))
+
+        else:
+            self.response.write(welcome_template.render(d))
+
         self.response.write(signup_template.render())  # the response
 
 class QuizPage(webapp2.RequestHandler):
@@ -79,8 +118,8 @@ class YelpPage(webapp2.RequestHandler):
         self.response.write(yelppage_template.render())
 # the app configuration section
 app = webapp2.WSGIApplication([
-    ('/', HomePage),
-    ('/signup', SignUpPage),
+    ('/', SignUpPage),
+    ('/home', HomePage),
     ('/login', LoginPage),
     ('/quiz', QuizPage),
     ('/results', ResultsPage),
