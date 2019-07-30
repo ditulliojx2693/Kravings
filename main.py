@@ -61,6 +61,10 @@ class AboutUsPage(webapp2.RequestHandler):
         self.response.write(aboutUs_template.render())  # the response
         #self.response.write("about us working")
 
+class YelpPage(webapp2.RequestHandler):
+    def get(self):
+        api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
+        yelp_endpoint_url = ''
 
 # the app configuration section
 app = webapp2.WSGIApplication([
