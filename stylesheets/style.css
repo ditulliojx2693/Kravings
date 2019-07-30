@@ -124,11 +124,10 @@ nav{
   min-height: 100%;
 }
 html{
-  background-color:#40a798;
+  background-image:url("images/background.jpg");
   color: #f1f1f1;
   font-family: 'Lato', sans-serif;
 }
-
 /* home page css*/
 
 #logo{
