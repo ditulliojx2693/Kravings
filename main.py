@@ -19,7 +19,7 @@ class QuizPage(webapp2.RequestHandler):
             "q1": "Do you want a burger?",
             "q2": "Do you want ice cream?",
             "q3": "Do you want tofu?",
-            "q4": "Are you looking beef?",
+            "q4": "Are you looking for beef?",
             "q5": "Do you want seafood?",
         }
 
@@ -29,7 +29,7 @@ class ResultsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         results_template = the_jinja_env.get_template('templates/results.html')
         self.response.write(results_template.render())  # the response
-        
+
 class AboutUsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         aboutUs_template = the_jinja_env.get_template('templates/AboutUs.html')

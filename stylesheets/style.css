@@ -42,7 +42,7 @@ nav{
 
 .footer{
   background-color: #476268;
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 0;
   right:0;
@@ -89,7 +89,9 @@ nav{
   border-radius: 5%;
   padding-bottom:2%
 }
+
 /* general css */
+
 .topic{
   text-align:center;
   padding-top: 50px;
