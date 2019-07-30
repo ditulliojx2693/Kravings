@@ -1,10 +1,14 @@
-let check = document.getElementsByTagName('input');
+let check = document.getElementsByClassName('.input');
+console.log(check);
 function ifChecked () {
-  if (check == null){
-    alert("Check all the boxes");
-    location.reload(QuizPage)
-  }
-  else{
+  console.log(check);
+  //if (check){
+    //alert("Check all the boxes");
+    //location.reload(true);
+  //}
+  //else{
 
-  }
+  //}
+}
+
 }
