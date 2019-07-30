@@ -89,21 +89,6 @@ nav{
   padding-bottom:2%
 }
 
-/* general css */
-
-.topic{
-  text-align:center;
-  padding-top: 50px;
-  min-height: 100%;
-}
-html{
-  background-color:#40a798;
-  color: #f1f1f1;
-  font-family: 'Lato', sans-serif;
-}
-
-/* home page css */
-
 .ourNames{
   text-align:center;
 }
@@ -130,12 +115,33 @@ html{
 .linkedin:hover{
   opacity:0.7;
 }
+
+/* general css */
+
+.topic{
+  text-align:center;
+  padding-top: 50px;
+  min-height: 100%;
+}
+html{
+  background-color:#40a798;
+  color: #f1f1f1;
+  font-family: 'Lato', sans-serif;
+}
+
+/* home page css*/
+
 #logo{
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   padding-bottom: 1%;
+  border-radius: 30%;
+  /*box-shadow: inset 0px 40px 20px #f9da66,
+    inset -20px 40px 20px #f9da66,
+    0px 0px 40px 20px #f9da66;*/
+
 }
 .homeText{
   margin-left: 5%;
@@ -156,6 +162,9 @@ html{
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   margin-bottom: 6%;
   padding: 10px;
+}
+#quiz:hover{
+  background-color:#318175;
 }
 .home{
   background-color: #f5e1da;
