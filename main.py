@@ -11,7 +11,6 @@ class HomePage(webapp2.RequestHandler):
     def get(self):  # for a get request
         home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())  # the response
-        self.response.write("homepage working")
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
@@ -30,8 +29,7 @@ class ResultsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         results_template = the_jinja_env.get_template('templates/results.html')
         self.response.write(results_template.render())  # the response
-        self.response.write("results working")
-
+        
 class AboutUsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         aboutUs_template = the_jinja_env.get_template('templates/AboutUs.html')
