@@ -23,7 +23,7 @@ class HomePage(webapp2.RequestHandler):
 class LoginPage(webapp2.RequestHandler):
     def get(self):
         login_template = the_jinja_env.get_template('templates/login.html')
-        self.response.write(login_template.render())   # the response
+        self.response.write(login_template.render())  # the response
 
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
@@ -85,22 +85,22 @@ class QuizPage(webapp2.RequestHandler):
             "q3": "Are you interested in trying something healthy?",
             "q4": "Are you looking for spicy food?",
             "q5": "Would you like an alternative to meat?",
-            "q6": "Do you like potatos?",
-            "q7": "Would you like a healthy option to burgers?",
-            "q8": "Do you want to eat food from asia?",
-            "q9": "Would you like an alternative to meat?",
-            "q10": "Would you like an alternative to meat?",
+            "q6": "Do you like fast food?",
+            "q7": "Would you like to customize your food?",
+            "q8": "Do you want to eat food that makes you feel good about yourself?",
+            "q9": "Would you like to try food that uses many different kinds of seasonings?",
+            "q10": "Are you a fan of things like sushi?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
 class ResultsPage(webapp2.RequestHandler):
     def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
-        burger_count = int(self.request.get("burger1")) + int(self.request.get("burger2"))
-        dessert_count = int(self.request.get("ice_cream1")) + int(self.request.get("ice_cream2"))
-        tofu_count = int(self.request.get("tofu1")) + int(self.request.get("tofu2"))
-        indian_count = int(self.request.get("beef1")) + int(self.request.get("beef2"))
-        seafood_count = int(self.request.get("seafood1")) + int(self.request.get("seafood2"))
+        burger_count = int(self.request.get("burger1"))
+        dessert_count = int(self.request.get("ice_cream1"))
+        tofu_count = int(self.request.get("tofu1"))
+        indian_count = int(self.request.get("beef1"))
+        seafood_count = int(self.request.get("seafood1"))
         fooditem = ""
         img = ""
         if burger_count > dessert_count and burger_count > tofu_count and burger_count > indian_count and burger_count > seafood_count:
@@ -129,28 +129,7 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Chinese Food"
         elif burger_count == seafood_count:
             img = "images/taco.png"
-            fooditem = "Fish Tacos"
-        elif  dessert_count == tofu_count:
-            img = "images/boba"
-            fooditem= "Boba"
-        elif dessert_count == indian_count:
-            img = "images/churros.png"
-            fooditem = "Churros"
-        elif dessert_count == seafood_count:
-            img = "images/sushi"
-            fooditem = "Sushi"
-        elif tofu_count == indian_count:
-            img = "images/acai.png"
-            fooditem = "Acai Bowl"
-        elif tofu_count == seafood_count:
-            img = "images/soup.png"
-            fooditem= "Soup"
-        elif indian_count == seafood_count:
-            img = "images/poke.png"
-            fooditem = "Poke"
-        else:
-            img = "images/nuggets.png"
-            fooditem = "Chicken Nuggets"
+            fooditem = "Fish Taco"
         food_display_dict = {
             "img": img,
             "fooditem": fooditem
