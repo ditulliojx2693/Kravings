@@ -148,6 +148,9 @@ class ResultsPage(webapp2.RequestHandler):
         elif indian_count == seafood_count:
             img = "images/poke.png"
             fooditem = "Poke"
+        else:
+            img = "images/nuggets.png"
+            fooditem = "Chicken Nuggets"
         food_display_dict = {
             "img": img,
             "fooditem": fooditem
