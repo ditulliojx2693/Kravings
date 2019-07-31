@@ -20,6 +20,10 @@ html{
   color: #f5e1da;
   margin:0;
 }
+input{
+  color: #f5e1da;
+  background-color:transparent;
+}
 #signUp:hover{
   color: #f1f1f1;
   text-decoration: underline;

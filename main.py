@@ -21,9 +21,14 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(home_template.render())  # the response
 
 class LoginPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
         self.response.write(login_template.render())
+
+class SignInPage(webapp2.RequestHandler):
+    def post(self):
+        signin_template = the_jinja_env.get_template('templates/signin.html')
+        self.response.write(signin_template.render())
 
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
@@ -174,6 +179,7 @@ app = webapp2.WSGIApplication([
     ('/', SignUpPage),
     ('/home', HomePage),
     ('/login', LoginPage),
+    ('/signup', SignInPage),
     ('/quiz', QuizPage),
     ('/results', ResultsPage),
     ('/yelppage', YelpPage),
