@@ -31,6 +31,7 @@ class HomePage(webapp2.RequestHandler):
             login == True;
         self.response.write(home_template.render())  # the response
     def get(self):
+        home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())
 
 class LoginPage(webapp2.RequestHandler):
