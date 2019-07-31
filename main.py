@@ -27,9 +27,12 @@ class HomePage(webapp2.RequestHandler):
         username_attempt = self.request.get('usernameAttempt')
         password_attempt = self.request.get('passwordAttempt')
         global login
+        global errortext
+        errortext = False
         login = False
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch()
         if len(check_cred) == 0:
+            errortext = True
             self.response.write(redirect_template.render())
         else:
             self.response.write(home_template.render())  # the response
@@ -47,7 +50,8 @@ class LoginPage(webapp2.RequestHandler):
         password = self.request.get('password')
         secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
         secure_data.put()
-        self.response.write(login_template.render())
+        error_dict = {"errortext": errortext}
+        self.response.write(login_template.render(error_dict))
     def get(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
         self.response.write(login_template.render())
