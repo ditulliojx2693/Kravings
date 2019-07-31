@@ -90,11 +90,11 @@ class QuizPage(webapp2.RequestHandler):
             "q3": "Are you interested in trying something healthy?",
             "q4": "Are you looking for spicy food?",
             "q5": "Would you like an alternative to meat?",
-            "q6": "Do you like potatos?",
-            "q7": "Would you like a healthy option to burgers?",
-            "q8": "Do you want to eat food from asia?",
-            "q9": "Would you like an alternative to meat?",
-            "q10": "Would you like an alternative to meat?",
+            "q6": "Do you like fast food?",
+            "q7": "Would you like to customize your food?",
+            "q8": "Do you want to eat food that makes you feel good about yourself?",
+            "q9": "Would you like to try food that uses many different kinds of seasonings?",
+            "q10": "Are you a fan of things like sushi?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
