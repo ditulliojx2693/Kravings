@@ -4,20 +4,22 @@
     <meta charset="utf-8">
     <title>Sign up for Kravings</title>
     <link rel="stylesheet" href="stylesheets/login.css">
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link rel="icon" type="image/png" href="images/logo_burger.png">
   </head>
   <body>
     <h1>Fill in all the boxes below:</h1>
     <div class="align">
-    <form class="form" action="/login" method="post">
+    <form class="form" action="/login" method="post" id="signUp">
       <p>First name:</p>
-      <input type="text" name="first_name" placeholder="First Name" class = "signUp">
+      <input type="text" name="first_name" placeholder="First Name" class = "signUp" id="firstName">
       <p>Last name:</p>
-      <input type="text" name="last_name" placeholder="Last Name" class="signUp">
+      <input type="text" name="last_name" placeholder="Last Name" class="signUp" id="lastName">
       <p>Username:</p>
-      <input type="text" name="username" placeholder="Username" class="signUp">
+      <input type="text" name="username" placeholder="Username" class="signUp" id="username1">
       <p>Password:</p>
-      <input type="text" name="password" placeholder="Password" class="signUp"><br><br><br>
-      <input type="submit" value="Create Account" id="submitSignUp">
+      <input type="text" name="password" placeholder="Password" class="signUp" id="password1"><br><br><br>
+      <input type="button" onclick="signUpCheck()" value="Create Account" id="submitSignUp">
     </form>
     </div>
     <div class="footer">
