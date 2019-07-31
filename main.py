@@ -19,7 +19,12 @@ class HomePage(webapp2.RequestHandler):
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.username == password_attempt).fetch()
         if check_cred == []:
             print('Your username or password is incorrect!')
+        else:
+            login == True;
         self.response.write(home_template.render())  # the response
+    def get(self):
+        self.response.write(home_template.render())
+
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
