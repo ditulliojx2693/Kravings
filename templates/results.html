@@ -13,10 +13,11 @@
   </head>
   <nav>
     <div class="header">
+      <img src="images/logo.png" alt="Kravings" id="kravings">
       <form action="/home"><button type="submit" class="tab">Home</button></form>
       <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
       <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
-      <form action="/login"><button type = "submit" class="tab" id ="loginButton"  >Log In</button></form>
+      </form>
     </div>
   </nav>
   <body>
@@ -24,8 +25,7 @@
       <h1 class="topic">You got...</h1>
       <img src="{{img}}" alt="food_image" class="foodDisplay">
       <center><h2 style="padding-bottom: 40px;">{{fooditem}}!</h2></center>
-      <center><h3>Click to Find Somewhere to Get {{fooditem}}</h3></center>
-      <center><h3 style="padding-bottom:40px"> Don't like your answer? Try our randomizer! </h3></center>
+      <center><h3 style="padding-bottom: 40px;">Click Here to Find Somewhere to Get {{fooditem}}!</h3></center>
     </div>
   </body>
   <div class="footer">

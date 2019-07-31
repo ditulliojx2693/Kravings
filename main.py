@@ -21,9 +21,14 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(home_template.render())  # the response
 
 class LoginPage(webapp2.RequestHandler):
-    def get(self):
-        login_template = the_jinja_env.get_template('templates/login.html')
-        self.response.write(login_template.render())   # the response
+    def post(self):
+        login_template = the_jinja_env.get_template('templates/login2.html')
+        self.response.write(login_template.render())
+
+class SignInPage(webapp2.RequestHandler):
+    def post(self):
+        signin_template = the_jinja_env.get_template('templates/signin.html')
+        self.response.write(signin_template.render())
 
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
@@ -96,11 +101,11 @@ class QuizPage(webapp2.RequestHandler):
 class ResultsPage(webapp2.RequestHandler):
     def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
-        burger_count = int(self.request.get("burger1"))
-        dessert_count = int(self.request.get("ice_cream1"))
-        tofu_count = int(self.request.get("tofu1"))
-        indian_count = int(self.request.get("beef1"))
-        seafood_count = int(self.request.get("seafood1"))
+        burger_count = int(self.request.get("burger1")) + int(self.request.get("burger2"))
+        dessert_count = int(self.request.get("ice_cream1")) + int(self.request.get("ice_cream2"))
+        tofu_count = int(self.request.get("tofu1")) + int(self.request.get("tofu2"))
+        indian_count = int(self.request.get("beef1")) + int(self.request.get("beef2"))
+        seafood_count = int(self.request.get("seafood1")) + int(self.request.get("seafood2"))
         fooditem = ""
         img = ""
         if burger_count > dessert_count and burger_count > tofu_count and burger_count > indian_count and burger_count > seafood_count:
@@ -129,7 +134,7 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Chinese Food"
         elif burger_count == seafood_count:
             img = "images/taco.png"
-            fooditem = "Fish Taco"
+            fooditem = "Fish Tacos"
         elif  dessert_count == tofu_count:
             img = "images/boba"
             fooditem= "Boba"
@@ -148,6 +153,9 @@ class ResultsPage(webapp2.RequestHandler):
         elif indian_count == seafood_count:
             img = "images/poke.png"
             fooditem = "Poke"
+        else:
+            img = "images/nuggets.png"
+            fooditem = "Chicken Nuggets"
         food_display_dict = {
             "img": img,
             "fooditem": fooditem
@@ -171,6 +179,7 @@ app = webapp2.WSGIApplication([
     ('/', SignUpPage),
     ('/home', HomePage),
     ('/login', LoginPage),
+    ('/signup', SignInPage),
     ('/quiz', QuizPage),
     ('/results', ResultsPage),
     ('/yelppage', YelpPage),

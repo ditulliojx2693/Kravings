@@ -4,6 +4,11 @@ function ifChecked () {
   let input3 = document.getElementsByName('tofu1');
   let input4 = document.getElementsByName('beef1');
   let input5 = document.getElementsByName('seafood1');
+  let input6 = document.getElementsByName('burger2');
+  let input7 = document.getElementsByName('ice_cream2');
+  let input8 = document.getElementsByName('tofu2');
+  let input9 = document.getElementsByName('beef2');
+  let input10 = document.getElementsByName('seafood2');
   let quiz = document.getElementsByClassName('quiz');
   let falseCount1 = 0;
   for (a = 0; a < input1.length; a++){
@@ -51,7 +56,57 @@ function ifChecked () {
       falseCount5 += 1;
     }
   };
-  if (falseCount1 == input1.length || falseCount2 == input2.length || falseCount3 == input3.length || falseCount4 == input4.length || falseCount5 == input5.length){
+  let falseCount6 = 0;
+  for (f = 0; f < input6.length; f++){
+    let check6 = input6[f].checked;
+    if (check6){
+      break
+    }
+    else{
+      falseCount6 += 1;
+    }
+  };
+  let falseCount7 = 0;
+  for (g = 0; g < input7.length; g++){
+    let check7 = input7[g].checked;
+    if (check7){
+      break
+    }
+    else{
+      falseCount7 += 1;
+    }
+  };
+  let falseCount8 = 0;
+  for (h = 0; h < input8.length; h++){
+    let check8 = input8[h].checked;
+    if (check8){
+      break
+    }
+    else{
+      falseCount8 += 1;
+    }
+  };
+  let falseCount9 = 0;
+  for (i = 0; i < input9.length; i++){
+    let check9 = input9[i].checked;
+    if (check9){
+      break
+    }
+    else{
+      falseCount9 += 1;
+    }
+  };
+  let falseCount10 = 0;
+  for (j = 0; j < input5.length; j++){
+    let check10 = input10[j].checked;
+    if (check10){
+      break
+    }
+    else{
+      falseCount10 += 1;
+    }
+  };
+  if (falseCount1 == input1.length || falseCount2 == input2.length || falseCount3 == input3.length || falseCount4 == input4.length || falseCount5 == input5.length || falseCount6 == input6.length || falseCount7 == input7.length || falseCount8 == input8.length || falseCount9 == input9.length || falseCount10 == input10.length){
     alert("You forgot a box!");
   }
   else{
