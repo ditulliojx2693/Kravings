@@ -131,3 +131,25 @@ function check() {
     logIn.submit();
   }
 }
+function signUpCheck(){
+  let password = document.getElementById('password1')
+  let username = document.getElementById('username1')
+  let firstName = document.getElementById('firstName')
+  let lastName = document.getElementById('lastName')
+  let signUp = document.getElementById('signUp')
+  if (firstName.value == ""){
+    alert("Fill in your first name")
+  }
+  else if(lastName.value == ""){
+    alert("Fill in your last name")
+  }
+  else if(username.value == ""){
+    alert("Fill in your username")
+  }
+  else if(password.value == ""){
+    alert("Fill in your password")
+  }
+  else{
+    signUp.submit()
+  }
+}
