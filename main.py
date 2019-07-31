@@ -125,6 +125,24 @@ class ResultsPage(webapp2.RequestHandler):
         elif burger_count == seafood_count:
             img = "images/taco.png"
             fooditem = "Fish Taco"
+        elif  dessert_count == tofu_count:
+            img = "images/boba"
+            fooditem= "Boba"
+        elif dessert_count == indian_count:
+            img = "images/churros.png"
+            fooditem = "Churros"
+        elif dessert_count == seafood_count:
+            img = "images/sushi"
+            fooditem = "Sushi"
+        elif tofu_count == indian_count:
+            img = "images/acai.png"
+            fooditem = "Acai Bowl"
+        elif tofu_count == seafood_count:
+            img = "images/soup.png"
+            fooditem= "Soup"
+        elif indian_count == seafood_count:
+            img = "images/poke.png"
+            fooditem = "Poke"
         food_display_dict = {
             "img": img,
             "fooditem": fooditem
