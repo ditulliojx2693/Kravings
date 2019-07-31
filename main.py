@@ -22,14 +22,14 @@ class CssiUser(ndb.Model):
 
 class HomePage(webapp2.RequestHandler):
     def post(self):  # for a get request
+        global login
+        login = False
+        global errortext
+        errortext = False
         home_template = the_jinja_env.get_template('templates/home.html')
         redirect_template = the_jinja_env.get_template('templates/redirect.html')
         username_attempt = self.request.get('usernameAttempt')
         password_attempt = self.request.get('passwordAttempt')
-        global login
-        global errortext
-        errortext = False
-        login = False
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch()
         if len(check_cred) == 0:
             errortext = True
