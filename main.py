@@ -11,7 +11,6 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData
 
-login = False
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -29,7 +28,7 @@ class LoginPage(webapp2.RequestHandler):
         last_name = self.request.get('last_name')
         username = self.request.get('username')
         password = self.request.get('password')
-        secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
+        secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password, loggedin = False)
         secure_data.put()
         self.response.write(login_template.render())
     def get(self):
@@ -46,12 +45,10 @@ class HomePage(webapp2.RequestHandler):
         if len(check_cred) == 0:
             self.response.write(redirect_template.render())
         else:
-            global login
-            print(login)
-            login = True
-            print(login)
-            # global userInfoKey
-            # userInfoKey = check_cred[0].key
+            userInfoKey = check_cred[0].key.get()
+            userInfoKey.loggedin = True
+            userInfoKey.put()
+            self.response.set_cookie("loggedin", userInfoKey.username)
             self.response.write(home_template.render())
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
@@ -66,8 +63,7 @@ class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
         redirect_template = the_jinja_env.get_template('templates/redirect.html')
-        print(login)
-        if login == True:
+        if self.request.cookies.get("loggedin"):
             questions_dict = {
                 "q1": "Do you want something savory?",
                 "q2": "Do you want something sweet?",
