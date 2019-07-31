@@ -160,7 +160,7 @@ class ResultsPage(webapp2.RequestHandler):
             "img": img,
             "fooditem": fooditem
         }
-        self.response.write(results_template.render(food_display_dict))  # the response
+        self.response.write(results_template.render(food_display_dict))   # the response
 
 class AboutUsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
