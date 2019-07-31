@@ -211,9 +211,8 @@ class YelpPage(webapp2.RequestHandler):
         self.response.write(yelppage_template.render())
 # the app configuration section
 app = webapp2.WSGIApplication([
-    ('/', SignUpPage),
+    ('/', LoginPage),
     ('/home', HomePage),
-    ('/login', LoginPage),
     ('/signup', SignInPage),
     ('/quiz', QuizPage),
     ('/results', ResultsPage),
