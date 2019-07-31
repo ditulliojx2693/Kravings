@@ -22,8 +22,8 @@ class HomePage(webapp2.RequestHandler):
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
-        login_template = the_jinja_env.get_template('templates/login.html')
-        self.response.write(login_template.render())   # the response
+        login_template = the_jinja_env.get_template('templates/login2.html')
+        self.response.write(login_template.render())
 
 class SignUpPage(webapp2.RequestHandler):
     def get(self):
