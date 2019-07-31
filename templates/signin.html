@@ -6,18 +6,20 @@
     <link rel="stylesheet" href="stylesheets/login.css">
   </head>
   <body>
+    <div class="align">
     <form class="form" action="/login" method="post">
       <h1>Fill in all the boxes below:</h1>
       <p>First name:</p>
-      <input type="text" name="first_name" placeholder="First Name">
+      <input type="text" name="first_name" placeholder="First Name" class = "signUp">
       <p>Last name:</p>
-      <input type="text" name="last_name" placeholder="Last Name">
+      <input type="text" name="last_name" placeholder="Last Name" class="signUp">
       <p>Username</p>
-      <input type="text" name="username" placeholder="Username">
+      <input type="text" name="username" placeholder="Username" class="signUp">
       <p>Password</p>
-      <input type="text" name="password" placeholder="Password"><br><br>
-      <input type="submit" value="Create Account">
+      <input type="text" name="password" placeholder="Password" class="signUp"><br><br><br>
+      <input type="submit" value="Create Account" id="submitSignUp">
     </form>
+    </div>
     <div class="footer">
       <p class="footerText">Google CSSI 2019</p>
     </div>

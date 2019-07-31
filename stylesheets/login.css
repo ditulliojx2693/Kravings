@@ -11,7 +11,6 @@ html{
   height: 100%;
   background-repeat:no-repeat;
   background-size:cover;
-  text-align:center;
 }
 #signUp{
   border-style:none;
@@ -68,4 +67,17 @@ p{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.align{
+  padding-left: 33%;
+  padding-right: 20%;
+}
+.loginCenter{
+  text-align:center;
+}
+.signUp{
+  margin-left:2%;
+}
+#submitSignUp{
+  
 }
