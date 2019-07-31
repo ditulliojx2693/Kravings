@@ -15,6 +15,10 @@ the_jinja_env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class CssiUser(ndb.Model):
+  first_name = ndb.StringProperty()
+  last_name = ndb.StringProperty()
+
 class HomePage(webapp2.RequestHandler):
     def post(self):  # for a get request
         home_template = the_jinja_env.get_template('templates/home.html')
@@ -23,7 +27,12 @@ class HomePage(webapp2.RequestHandler):
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.username == password_attempt).fetch()
         if check_cred == []:
             print('Your username or password is incorrect!')
+        else:
+            login == True;
         self.response.write(home_template.render())  # the response
+    def get(self):
+        home_template = the_jinja_env.get_template('templates/home.html')
+        self.response.write(home_template.render())
 
 class LoginPage(webapp2.RequestHandler):
     def get(self):
