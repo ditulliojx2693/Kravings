@@ -14,7 +14,13 @@ nav{
   left: 0;
   right: 0;
 }
-
+#kravings{
+  height:50px;
+  padding-right: 10px;
+  padding-left: 15px;
+  padding-top: 2px;
+  padding-bottom: 8px;
+}
 .tab{
   background-color: #476268;
   border-style: none;
