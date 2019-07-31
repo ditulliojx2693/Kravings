@@ -11,6 +11,8 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData
 
+login = False
+
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -19,24 +21,6 @@ the_jinja_env = jinja2.Environment(
 class CssiUser(ndb.Model):
   first_name = ndb.StringProperty()
   last_name = ndb.StringProperty()
-
-class HomePage(webapp2.RequestHandler):
-    def post(self):  # for a get request
-        home_template = the_jinja_env.get_template('templates/home.html')
-        redirect_template = the_jinja_env.get_template('templates/redirect.html')
-        username_attempt = self.request.get('usernameAttempt')
-        password_attempt = self.request.get('passwordAttempt')
-        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch(1)
-        if len(check_cred) == 0:
-            self.response.write(redirect_template.render())
-        else:
-            self.response.write(home_template.render())  # the response
-            login = True
-            global userInfoKey
-            userInfoKey = check_cred[0].key
-    def get(self):
-        home_template = the_jinja_env.get_template('templates/home.html')
-        self.response.write(home_template.render())
 
 class LoginPage(webapp2.RequestHandler):
     def post(self):
@@ -49,10 +33,29 @@ class LoginPage(webapp2.RequestHandler):
         secure_data.put()
         self.response.write(login_template.render())
     def get(self):
-        global login
-        login = False
         login_template = the_jinja_env.get_template('templates/login2.html')
         self.response.write(login_template.render())
+
+class HomePage(webapp2.RequestHandler):
+    def post(self):
+        home_template = the_jinja_env.get_template('templates/home.html')
+        redirect_template = the_jinja_env.get_template('templates/redirect.html')
+        username_attempt = self.request.get('usernameAttempt')
+        password_attempt = self.request.get('passwordAttempt')
+        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch(1)
+        if len(check_cred) == 0:
+            self.response.write(redirect_template.render())
+        else:
+            global login
+            print(login)
+            login = True
+            print(login)
+            # global userInfoKey
+            # userInfoKey = check_cred[0].key
+            self.response.write(home_template.render())
+    def get(self):
+        home_template = the_jinja_env.get_template('templates/home.html')
+        self.response.write(home_template.render())
 
 class SignInPage(webapp2.RequestHandler):
     def post(self):
@@ -63,6 +66,7 @@ class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
         redirect_template = the_jinja_env.get_template('templates/redirect.html')
+        print(login)
         if login == True:
             questions_dict = {
                 "q1": "Do you want something savory?",
@@ -88,6 +92,7 @@ class ResultsPage(webapp2.RequestHandler):
         tofu_count = int(self.request.get("tofu1")) + int(self.request.get("tofu2"))
         indian_count = int(self.request.get("beef1")) + int(self.request.get("beef2"))
         seafood_count = int(self.request.get("seafood1")) + int(self.request.get("seafood2"))
+        global fooditem
         fooditem = ""
         img = ""
         if burger_count > dessert_count and burger_count > tofu_count and burger_count > indian_count and burger_count > seafood_count:
