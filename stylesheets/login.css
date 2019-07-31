@@ -12,14 +12,14 @@ html{
   background-repeat:no-repeat;
   background-size:cover;
 }
-#signUp{
+#signUpLogin{
   border-style:none;
   background-color:transparent;
   text-decoration:none;
   color: #f5e1da;
   margin:0;
 }
-#signUp:hover{
+#signUpLogin:hover{
   color: #f1f1f1;
   text-decoration: underline;
 }
