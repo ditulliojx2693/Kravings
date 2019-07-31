@@ -73,9 +73,11 @@ p{
   text-align:center;
 }
 .signUp{
-  margin-left:2%;
+  margin-left:4%;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   background-color:#40a798;
+  padding-right:2%;
+  padding-left:20px;
 }
 #submitSignUp:hover{
   text-decoration:underline;
