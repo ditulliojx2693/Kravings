@@ -23,7 +23,6 @@ function ifChecked () {
     else{
       falseCount2 += 1;
     }};
-    //something here broken
     let falseCount3 = 0;
     for (c = 0; c < input3.length; c++){
       let check3 = input3[c].checked;
@@ -56,10 +55,6 @@ function ifChecked () {
     alert("You forgot a box!");
   }
   else{
-<<<<<<< HEAD
-    
-=======
     quiz[0].submit();
->>>>>>> 238ca47b0bd1dd6d1ba1b08ce3447c00ab58189e
   };
  }
