@@ -49,7 +49,7 @@ class LoginPage(webapp2.RequestHandler):
         password = self.request.get('password')
         secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
         secure_data.put()
-        self.response.write(login_template.render()
+        self.response.write(login_template.render())
     def get(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
         self.response.write(login_template.render())
