@@ -22,20 +22,18 @@ class CssiUser(ndb.Model):
 
 class HomePage(webapp2.RequestHandler):
     def post(self):  # for a get request
-        global login
-        login = False
         home_template = the_jinja_env.get_template('templates/home.html')
         redirect_template = the_jinja_env.get_template('templates/redirect.html')
         username_attempt = self.request.get('usernameAttempt')
         password_attempt = self.request.get('passwordAttempt')
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch(1)
         if len(check_cred) == 0:
-            errortext = True
             self.response.write(redirect_template.render())
         else:
             self.response.write(home_template.render())  # the response
             login = True
-            print(check_cred[0])
+            global userInfoKey
+            userInfoKey = check_cred[0].key
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())
@@ -51,6 +49,8 @@ class LoginPage(webapp2.RequestHandler):
         secure_data.put()
         self.response.write(login_template.render())
     def get(self):
+        global login
+        login = False
         login_template = the_jinja_env.get_template('templates/login2.html')
         self.response.write(login_template.render())
 
