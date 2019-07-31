@@ -193,22 +193,22 @@ class AboutUsPage(webapp2.RequestHandler):
 
 class YelpPage(webapp2.RequestHandler):
     def get(self):
+        ClientId = 'Gt46dGLdwKMdznkcqbizJQ'
         api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
+        endpoint = 'https://api.yelp.com/v3/businesses/search'
         headers = {'Authorization': 'Bearer %s' % api_key}
-        url='https://api.yelp.com/v3/businesses/search'
-        params = {'term':'fooditem','location':'New York City'}
+        params = {'term':'pizza','limit':10,'radius':10000,'sort_by':'rating','location':'Seattle'}
         requests_toolbelt.adapters.appengine.monkeypatch()
-        req=requests.get(url, params=params, headers=headers)
-        parsed = json.loads(req.text)
-        businesses = parsed["businesses"]
-        for business in businesses:
-            print("Name:", business["name"])
-            print("Rating:", business["rating"])
-            print("Address:", " ".join(business["location"]["display_address"]))
-            print("Phone:", business["phone"])
-            print("\n")
+        req=requests.get(url=endpoint, params=params, headers=headers)
+        business_data = req.json()
+        print(business_data.keys())
+        for biz in business_data['businesses']:
+            print (biz['name'])
+        yelp_dict = {
+            'businesses': business_data
+        }
         yelppage_template = the_jinja_env.get_template('templates/YelpPage.html')
-        self.response.write(yelppage_template.render())
+        self.response.write(yelppage_template.render(business_data))
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
