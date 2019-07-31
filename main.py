@@ -83,8 +83,13 @@ class QuizPage(webapp2.RequestHandler):
             "q1": "Do you want something savory?",
             "q2": "Do you want something sweet?",
             "q3": "Are you interested in trying something healthy?",
-            "q4": "Are you looking for mainly meat?",
+            "q4": "Are you looking for spicy food?",
             "q5": "Would you like an alternative to meat?",
+            "q6": "Do you like potatos?",
+            "q7": "Would you like a healthy option to burgers?",
+            "q8": "Do you want to eat food from asia?",
+            "q9": "Would you like an alternative to meat?",
+            "q10": "Would you like an alternative to meat?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
