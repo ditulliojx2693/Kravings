@@ -113,3 +113,21 @@ function ifChecked () {
     quiz[0].submit();
   };
  }
+
+function check() {
+  let password = document.getElementById('password')
+  let username = document.getElementById('username')
+  let logIn = document.getElementById('logIn')
+  if (password.value == "" && username.value == ""){
+    alert("Fill all boxes!")
+  }
+  else if (password.value == ""){
+    alert('Fill in the password box!');
+  }
+  else if(username.value == ""){
+    alert('Fill in the username box!');
+  }
+  else{
+    logIn.submit();
+  }
+}
