@@ -6,11 +6,11 @@ from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData
-
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
 
 class CssiUser(ndb.Model):
   first_name = ndb.StringProperty()
@@ -21,10 +21,15 @@ class HomePage(webapp2.RequestHandler):
         home_template = the_jinja_env.get_template('templates/home.html')
         username_attempt = self.request.get('usernameAttempt')
         password_attempt = self.request.get('passwordAttempt')
-        check_cred = UserData.query(UserData.username == username_attempt,UserData.username == password_attempt)
+        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.username == password_attempt).fetch()
+        if check_cred == []:
+            print('Your username or password is incorrect!')
         self.response.write(home_template.render())  # the response
 
 class LoginPage(webapp2.RequestHandler):
+    def get(self):
+        login_template = the_jinja_env.get_template('templates/login2.html')
+        self.response.write(login_template.render())
     def post(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
         first_name = self.request.get('first_name')
@@ -33,7 +38,6 @@ class LoginPage(webapp2.RequestHandler):
         password = self.request.get('password')
         secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
         secure_data.put()
-
         self.response.write(login_template.render())
 
 class SignInPage(webapp2.RequestHandler):
