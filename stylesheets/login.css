@@ -12,18 +12,14 @@ html{
   background-repeat:no-repeat;
   background-size:cover;
 }
-#signUp{
+#signUpLogin{
   border-style:none;
   background-color:transparent;
   text-decoration:none;
   color: #f5e1da;
   margin:0;
 }
-input{
-  color: #f5e1da;
-  background-color:transparent;
-}
-#signUp:hover{
+#signUpLogin:hover{
   color: #f1f1f1;
   text-decoration: underline;
 }
@@ -34,10 +30,11 @@ h1{
 }
 input{
   border-style:none;
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   height: 30px;
   width: 200px;
   font-size: 16px;
+  color: #f5e1da;
+  background-color:transparent;
 }
 ::placeholder{
   color:#f5e1da;
@@ -77,7 +74,12 @@ p{
 }
 .signUp{
   margin-left:2%;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+  background-color:#40a798;
 }
-#submitSignUp{
-  
+#submitSignUp:hover{
+  text-decoration:underline;
+}
+h1{
+  text-align:center;
 }

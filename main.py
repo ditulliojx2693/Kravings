@@ -1,11 +1,15 @@
 import webapp2
 import jinja2
 import os
+import requests
+import requests_toolbelt.adapters.appengine
+import json
+from google.appengine.ext import vendor
 from google.appengine.api import urlfetch
 from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
-
+from model import UserData
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -16,13 +20,31 @@ class CssiUser(ndb.Model):
   last_name = ndb.StringProperty()
 
 class HomePage(webapp2.RequestHandler):
-    def get(self):  # for a get request
+    def post(self):  # for a get request
         home_template = the_jinja_env.get_template('templates/home.html')
+        username_attempt = self.request.get('usernameAttempt')
+        password_attempt = self.request.get('passwordAttempt')
+        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.username == password_attempt).fetch()
+        if check_cred == []:
+            print('Your username or password is incorrect!')
+        else:
+            login == True;
         self.response.write(home_template.render())  # the response
+    def get(self):
+        self.response.write(home_template.render())
 
 class LoginPage(webapp2.RequestHandler):
+    def get(self):
+        login_template = the_jinja_env.get_template('templates/login2.html')
+        self.response.write(login_template.render())
     def post(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
+        first_name = self.request.get('first_name')
+        last_name = self.request.get('last_name')
+        username = self.request.get('username')
+        password = self.request.get('password')
+        secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
+        secure_data.put()
         self.response.write(login_template.render())
 
 class SignInPage(webapp2.RequestHandler):
@@ -90,11 +112,11 @@ class QuizPage(webapp2.RequestHandler):
             "q3": "Are you interested in trying something healthy?",
             "q4": "Are you looking for spicy food?",
             "q5": "Would you like an alternative to meat?",
-            "q6": "Do you like potatos?",
-            "q7": "Would you like a healthy option to burgers?",
-            "q8": "Do you want to eat food from asia?",
-            "q9": "Would you like an alternative to meat?",
-            "q10": "Would you like an alternative to meat?",
+            "q6": "Do you like fast food?",
+            "q7": "Would you like to customize your food?",
+            "q8": "Do you want to eat food that makes you feel good about yourself?",
+            "q9": "Would you like to try food that uses many different kinds of seasonings?",
+            "q10": "Are you a fan of things like sushi?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
@@ -171,7 +193,19 @@ class AboutUsPage(webapp2.RequestHandler):
 class YelpPage(webapp2.RequestHandler):
     def get(self):
         api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
-        yelp_endpoint_url = ''
+        headers = {'Authorization': 'Bearer %s' % api_key}
+        url='https://api.yelp.com/v3/businesses/search'
+        params = {'term':'fooditem','location':'New York City'}
+        requests_toolbelt.adapters.appengine.monkeypatch()
+        req=requests.get(url, params=params, headers=headers)
+        parsed = json.loads(req.text)
+        businesses = parsed["businesses"]
+        for business in businesses:
+            print("Name:", business["name"])
+            print("Rating:", business["rating"])
+            print("Address:", " ".join(business["location"]["display_address"]))
+            print("Phone:", business["phone"])
+            print("\n")
         yelppage_template = the_jinja_env.get_template('templates/YelpPage.html')
         self.response.write(yelppage_template.render())
 # the app configuration section

@@ -15,6 +15,8 @@
         padding-left: 38px;
       }
     </style>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link rel="icon" type="image/png" href="images/logo_burger.png">
   </head>
   <body>
     <div class="header">
@@ -22,13 +24,13 @@
     </div>
     <div class="loginCenter">
     <h1> Login to Kravings</h1>
-    <form class="" action="index.html" method="post">
-      <input type="text" name="username" placeholder="Username" id="username"> <br> <br>
-      <input type="password" name="password" placeholder="Password" id="password"> <br><br><br>
+    <form action="/home" method="post" id="logIn">
+      <input type="text" name="usernameAttempt" placeholder="Username" id="username"> <br> <br>
+      <input type="password" name="passwordAttempt" placeholder="Password" id="password"> <br><br><br>
       <!-- make it so this checks the values with a database when you push submit-->
-      <input type="submit" value="Submit">
+      <input type="button" onclick="check()" value="Submit">
     </form><br>
-    <form class="" action="/signup" method="post"><button type="submit" name="button" id="signUp">Don't have an account? Sign up here!</button></form>
+    <form class="" action="/signup" method="post"><button type="submit" name="button" id="signUpLogin">Don't have an account? Sign up here!</button></form>
     </div>
     <div class="footer">
       <p class="footerText">Google CSSI 2019</p>
