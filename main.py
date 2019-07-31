@@ -1,6 +1,10 @@
 import webapp2
 import jinja2
 import os
+import requests
+import requests_toolbelt.adapters.appengine
+import json
+from google.appengine.ext import vendor
 from google.appengine.api import urlfetch
 from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
@@ -171,7 +175,19 @@ class AboutUsPage(webapp2.RequestHandler):
 class YelpPage(webapp2.RequestHandler):
     def get(self):
         api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
-        yelp_endpoint_url = ''
+        headers = {'Authorization': 'Bearer %s' % api_key}
+        url='https://api.yelp.com/v3/businesses/search'
+        params = {'term':'fooditem','location':'New York City'}
+        requests_toolbelt.adapters.appengine.monkeypatch()
+        req=requests.get(url, params=params, headers=headers)
+        parsed = json.loads(req.text)
+        businesses = parsed["businesses"]
+        for business in businesses:
+            print("Name:", business["name"])
+            print("Rating:", business["rating"])
+            print("Address:", " ".join(business["location"]["display_address"]))
+            print("Phone:", business["phone"])
+            print("\n")
         yelppage_template = the_jinja_env.get_template('templates/YelpPage.html')
         self.response.write(yelppage_template.render())
 # the app configuration section
