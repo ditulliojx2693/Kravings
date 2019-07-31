@@ -110,14 +110,14 @@ class QuizPage(webapp2.RequestHandler):
         questions_dict = {
             "q1": "Do you want something savory?",
             "q2": "Do you want something sweet?",
-            "q3": "Are you interested in trying something healthy?",
+            "q3": "Would you like something vegan or vegitarian?",
             "q4": "Are you looking for spicy food?",
-            "q5": "Would you like an alternative to meat?",
-            "q6": "Do you like fast food?",
-            "q7": "Would you like to customize your food?",
-            "q8": "Do you want to eat food that makes you feel good about yourself?",
+            "q5": "Would you like something rich?",
+            "q6": "Do you like something you can take to go?",
+            "q7": "Would you like something unhealthy?",
+            "q8": "Do you want to eat something healthy and light?",
             "q9": "Would you like to try food that uses many different kinds of seasonings?",
-            "q10": "Are you a fan of things like sushi?",
+            "q10": "Are you a fan of seafood?",
         }
         self.response.write(quiz_template.render(questions_dict))  # the response
 
@@ -138,8 +138,8 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/ice_cream.png"
             fooditem = "Ice Cream"
         elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > indian_count and tofu_count > seafood_count:
-            img = "images/tofu.png"
-            fooditem = "Tofu"
+            img = "images/salad.png"
+            fooditem = "Salad"
         elif indian_count > burger_count and indian_count > dessert_count and indian_count > tofu_count and indian_count > seafood_count:
             img = "images/indian.png"
             fooditem = "Indian Food"
