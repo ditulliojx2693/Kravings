@@ -24,7 +24,6 @@
     </div>
     <div class="loginCenter">
     <h1> Login to Kravings</h1>
-    {% if errortext %}<p>Either your username or password is incorrect</p> {% else %} {% endif %}
     <form action="/home" method="post" id="logIn">
       <input type="text" name="usernameAttempt" placeholder="Username" id="username"> <br> <br>
       <input type="password" name="passwordAttempt" placeholder="Password" id="password"> <br><br><br>
