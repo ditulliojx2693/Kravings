@@ -10,6 +10,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData
+
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -22,22 +23,22 @@ class CssiUser(ndb.Model):
 class HomePage(webapp2.RequestHandler):
     def post(self):  # for a get request
         home_template = the_jinja_env.get_template('templates/home.html')
+        redirect_template = the_jinja_env.get_template('templates/redirect.html')
         username_attempt = self.request.get('usernameAttempt')
         password_attempt = self.request.get('passwordAttempt')
-        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.username == password_attempt).fetch()
-        if check_cred == []:
-            print('Your username or password is incorrect!')
+        global login
+        login = False
+        check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch()
+        if len(check_cred) == 0:
+            self.response.write(redirect_template.render())
         else:
-            login == True;
-        self.response.write(home_template.render())  # the response
+            self.response.write(home_template.render())  # the response
+            login = True
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
         self.response.write(home_template.render())
 
 class LoginPage(webapp2.RequestHandler):
-    def get(self):
-        login_template = the_jinja_env.get_template('templates/login2.html')
-        self.response.write(login_template.render())
     def post(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
         first_name = self.request.get('first_name')
@@ -47,79 +48,86 @@ class LoginPage(webapp2.RequestHandler):
         secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password)
         secure_data.put()
         self.response.write(login_template.render())
+    def get(self):
+        login_template = the_jinja_env.get_template('templates/login2.html')
+        self.response.write(login_template.render())
 
 class SignInPage(webapp2.RequestHandler):
     def post(self):
         signin_template = the_jinja_env.get_template('templates/signin.html')
         self.response.write(signin_template.render())
 
-class SignUpPage(webapp2.RequestHandler):
-    def get(self):
-        signup_template = the_jinja_env.get_template('templates/signup.html')
-        self.response.write(signup_template.render())
-    def get(self):
-      user = users.get_current_user()
-      # If the user is logged in...
-      if user:
-        email_address = user.nickname()
-        cssi_user = CssiUser.get_by_id(user.user_id())
-        signout_link_html = '<a href="%s">sign out</a>' % (
-            users.create_logout_url('/'))
-        # If the user has previously been to our site, we greet them!
-        if cssi_user:
-          self.response.write('''
-              Welcome %s %s (%s)! <br> %s <br>''' % (
-                cssi_user.first_name,
-                cssi_user.last_name,
-                email_address,
-                signout_link_html))
-        # If the user hasn't been to our site, we ask them to sign up
-        else:
-          self.response.write('''
-              Welcome to our site, %s!  Please sign up! <br>
-              <form method="post" action="/">
-              <input type="text" name="first_name">
-              <input type="text" name="last_name">
-              <input type="submit">
-              </form><br> %s <br>
-              ''' % (email_address, signout_link_html))
-      # Otherwise, the user isn't logged in!
-      else:
-        self.response.write('''
-          Please log in to use our site! <br>
-          <a href="%s">Sign in</a>''' % (
-            users.create_login_url('/home')))
-
-    def post(self):
-      user = users.get_current_user()
-      if not user:
-        # You shouldn't be able to get here without being logged in
-        self.error(500)
-        return
-      cssi_user = CssiUser(
-          first_name=self.request.get('first_name'),
-          last_name=self.request.get('last_name'),
-          id=user.user_id())
-      cssi_user.put()
-      self.response.write('Thanks for signing up, %s!' %
-          cssi_user.first_name)
+# class SignUpPage(webapp2.RequestHandler):
+#     def get(self):
+#         signup_template = the_jinja_env.get_template('templates/signup.html')
+#         self.response.write(signup_template.render())
+#     def get(self):
+#       user = users.get_current_user()
+#       # If the user is logged in...
+#       if user:
+#         email_address = user.nickname()
+#         cssi_user = CssiUser.get_by_id(user.user_id())
+#         signout_link_html = '<a href="%s">sign out</a>' % (
+#             users.create_logout_url('/'))
+#         # If the user has previously been to our site, we greet them!
+#         if cssi_user:
+#           self.response.write('''
+#               Welcome %s %s (%s)! <br> %s <br>''' % (
+#                 cssi_user.first_name,
+#                 cssi_user.last_name,
+#                 email_address,
+#                 signout_link_html))
+#         # If the user hasn't been to our site, we ask them to sign up
+#         else:
+#           self.response.write('''
+#               Welcome to our site, %s!  Please sign up! <br>
+#               <form method="post" action="/">
+#               <input type="text" name="first_name">
+#               <input type="text" name="last_name">
+#               <input type="submit">
+#               </form><br> %s <br>
+#               ''' % (email_address, signout_link_html))
+#       # Otherwise, the user isn't logged in!
+#       else:
+#         self.response.write('''
+#           Please log in to use our site! <br>
+#           <a href="%s">Sign in</a>''' % (
+#             users.create_login_url('/home')))
+    #
+    # def post(self):
+    #   user = users.get_current_user()
+    #   if not user:
+    #     # You shouldn't be able to get here without being logged in
+    #     self.error(500)
+    #     return
+    #   cssi_user = CssiUser(
+    #       first_name=self.request.get('first_name'),
+    #       last_name=self.request.get('last_name'),
+    #       id=user.user_id())
+    #   cssi_user.put()
+    #   self.response.write('Thanks for signing up, %s!' %
+    #       cssi_user.first_name)
 
 class QuizPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         quiz_template = the_jinja_env.get_template('templates/quiz.html')
-        questions_dict = {
-            "q1": "Do you want something savory?",
-            "q2": "Do you want something sweet?",
-            "q3": "Are you interested in trying something healthy?",
-            "q4": "Are you looking for spicy food?",
-            "q5": "Would you like an alternative to meat?",
-            "q6": "Do you like fast food?",
-            "q7": "Would you like to customize your food?",
-            "q8": "Do you want to eat food that makes you feel good about yourself?",
-            "q9": "Would you like to try food that uses many different kinds of seasonings?",
-            "q10": "Are you a fan of things like sushi?",
-        }
-        self.response.write(quiz_template.render(questions_dict))  # the response
+        redirect_template = the_jinja_env.get_template('templates/redirect.html')
+        if login == True:
+            questions_dict = {
+                "q1": "Do you want something savory?",
+                "q2": "Do you want something sweet?",
+                "q3": "Would you like something vegan or vegitarian?",
+                "q4": "Are you looking for spicy food?",
+                "q5": "Would you like something rich?",
+                "q6": "Do you want something you can take to go?",
+                "q7": "Would you like something unhealthy?",
+                "q8": "Do you want to eat something healthy and light?",
+                "q9": "Would you like to try food that uses many different kinds of seasonings?",
+                "q10": "Are you a fan of seafood?",
+            }
+            self.response.write(quiz_template.render(questions_dict))  # the response
+        else:
+            self.response.write(redirect_template.render())
 
 class ResultsPage(webapp2.RequestHandler):
     def post(self):
@@ -138,8 +146,8 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/ice_cream.png"
             fooditem = "Ice Cream"
         elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > indian_count and tofu_count > seafood_count:
-            img = "images/tofu.png"
-            fooditem = "Tofu"
+            img = "images/salad.png"
+            fooditem = "Salad"
         elif indian_count > burger_count and indian_count > dessert_count and indian_count > tofu_count and indian_count > seafood_count:
             img = "images/indian.png"
             fooditem = "Indian Food"
