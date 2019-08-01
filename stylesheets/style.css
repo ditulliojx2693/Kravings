@@ -55,13 +55,28 @@ nav{
   right:0;
   bottom: 0;
   margin-top:40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .footerText{
   font-size: 10px;
   text-align: right;
   padding-right: 1%;
-  padding-bottom: 0;
   font-family: 'Lato', sans-serif;
+  white-space:nowrap;
+  padding-bottom:10px;
+  padding-top: 10px;
+}
+.footerText2{
+  text-align:left;
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  padding-left: 1%;
+  display: flex;
+  white-space:nowrap;
+  padding-bottom:10px;
+  padding-top: 10px;
 }
 /* about us page css */
 
@@ -107,19 +122,28 @@ nav{
   margin-right: auto;
 }
 .linkedin{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttonElements{
   height:40px;
   border-radius: 10%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+#twitter{
+  margin-left: 10px;
+}
+#instagram{
+  margin-left:10px;
+  border-radius: 25%;
 }
 .bios{
   text-align:center;
   padding-left:2%;
   padding-right: 2%;
 }
-.linkedin:hover{
+.buttonElements:hover{
   opacity:0.7;
 }
 
@@ -127,7 +151,7 @@ nav{
 
 .topic{
   text-align:center;
-  padding-top: 50px;
+  padding-top: 40px;
   min-height: 100%;
 }
 html{
@@ -212,4 +236,45 @@ html{
   display: block;
   margin-left: auto;
   margin-right:auto;
+}
+
+/* Login Page css stuff */
+
+#loginText{
+  text-align: center;
+}
+#loginButton{
+
+}
+#signUpButton{
+  text-decoration: none;
+}
+
+/* results page */
+
+.yelp{
+  background-color: transparent;
+  color:#476268;
+  font-size: 16px;
+  border-style: none;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+  font-family: 'Lato', sans-serif;
+}
+.yelp:hover{
+  text-decoration: underline;
+}
+.signOut{
+  padding-top:10px;
+  padding-left: 92%;
+}
+#logOut{
+  background-color: transparent;
+  border-style:none;
+  color:#476268;
+  font-size: 12px;
+}
+#logOut:hover{
+  text-decoration:underline;
 }

@@ -11,7 +11,7 @@
   <body>
     <h1>Fill in all the boxes below:</h1>
     <div class="align">
-    <form class="form" action="/login" method="post" id="signUp">
+    <form class="form" action="/" method="post" id="signUp">
       <p>First name:</p>
       <input type="text" name="first_name" placeholder="First Name" class = "signUp" id="firstName">
       <p>Last name:</p>
@@ -19,8 +19,11 @@
       <p>Username:</p>
       <input type="text" name="username" placeholder="Username" class="signUp" id="username1">
       <p>Password:</p>
-      <input type="text" name="password" placeholder="Password" class="signUp" id="password1"><br><br><br>
+      <input type="password" name="password" placeholder="Password" class="signUp" id="password1"><br><br><br>
       <input type="button" onclick="signUpCheck()" value="Create Account" id="submitSignUp">
+    </form>
+    <form class="align" action="/" method="get">
+      <button type="submit" id="back">Back</button>
     </form>
     </div>
     <div class="footer">

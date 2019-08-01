@@ -5,3 +5,4 @@ class UserData(ndb.Model):
     last_name = ndb.StringProperty()
     username = ndb.StringProperty()
     password = ndb.StringProperty()
+    loggedin = ndb.BooleanProperty()

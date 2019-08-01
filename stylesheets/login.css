@@ -6,12 +6,57 @@
 }
 html{
   font-family: 'Lato', sans-serif;
-  background-image: linear-gradient(#40a798,#476268);
   color: #f5e1da;
   height: 100%;
   background-repeat:no-repeat;
   background-size:cover;
 }
+html {
+	width: 100wh;
+	height: 90vh;
+	background: linear-gradient(-45deg, #3e666f, #40a798, #476268, #278668);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 #signUpLogin{
   border-style:none;
   background-color:transparent;
@@ -73,13 +118,23 @@ p{
   text-align:center;
 }
 .signUp{
-  margin-left:2%;
+  margin-left:4%;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   background-color:#40a798;
+  padding-right:2%;
+  padding-left:20px;
 }
 #submitSignUp:hover{
   text-decoration:underline;
 }
 h1{
   text-align:center;
+}
+#back{
+  background-color: transparent;
+  color:#f5e1da;
+  border-style:none;
+}
+#back:hover{
+  text-decoration:underline;
 }
