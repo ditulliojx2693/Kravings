@@ -4,6 +4,7 @@ import os
 import requests
 import requests_toolbelt.adapters.appengine
 import json
+import random
 from google.appengine.ext import vendor
 from google.appengine.api import urlfetch
 from flask import Flask, redirect, url_for, render_template, request
@@ -122,6 +123,65 @@ class QuizPage(webapp2.RequestHandler):
         self.response.write(quiz_template.render(questions_dict))  # the response
 
 class ResultsPage(webapp2.RequestHandler):
+    def get(self):
+        results_template = the_jinja_env.get_template('templates/results.html')
+        img = ""
+        fooditem = ""
+        ran_num = random.randint(1,16)
+        print(ran_num)
+        if ran_num == 1:
+            img = "images/burger.png"
+            fooditem = "Burger"
+        elif ran_num == 2:
+            img = "images/chinese.png"
+            fooditem = "Chinese Food"
+        elif ran_num == 3:
+            img = "images/taco.png"
+            fooditem = "Taco"
+        elif ran_num == 4:
+            img = "images/boba.png"
+            fooditem = "Boba"
+        elif ran_num == 5:
+            img = "images/veggie.png"
+            fooditem = "Veggie Burger"
+        elif ran_num == 6:
+            img = "images/fries.png"
+            fooditem = "Fries"
+        elif ran_num == 7:
+            img = "https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
+            fooditem = "Seafood"
+        elif ran_num == 8:
+            img = "images/indian.png"
+            fooditem = "Indian Food"
+        elif ran_num == 9:
+            img = "images/tofu.png"
+            fooditem = "Tofu"
+        elif ran_num == 10:
+            img = "images/ice_cream.png"
+            fooditem = "Ice Cream"
+        elif ran_num == 11:
+            img = "images/churros.png"
+            fooditem = "Churros"
+        elif ran_num == 12:
+            img = "images/sushi.png"
+            fooditem = "Sushi"
+        elif ran_num == 13:
+            img = "images/acai.png"
+            fooditem = "Acai Bowl"
+        elif ran_num == 14:
+            img = "images/soup.png"
+            fooditem = "Soup"
+        elif ran_num == 15:
+            img = "images/poke.png"
+            fooditem = "Poke"
+        else:
+            img = "images/nuggets.png"
+            fooditem = "Chicken Nuggets"
+        food_display_dict = {
+            "img": img,
+            "fooditem": fooditem
+        }
+        self.response.write(results_template.render(food_display_dict))
     def post(self):
         results_template = the_jinja_env.get_template('templates/results.html')
         burger_count = int(self.request.get("burger1")) + int(self.request.get("burger2"))
@@ -159,13 +219,13 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/taco.png"
             fooditem = "Fish Tacos"
         elif  dessert_count == tofu_count:
-            img = "images/boba"
+            img = "images/boba.png"
             fooditem= "Boba"
         elif dessert_count == indian_count:
             img = "images/churros.png"
             fooditem = "Churros"
         elif dessert_count == seafood_count:
-            img = "images/sushi"
+            img = "images/sushi.png"
             fooditem = "Sushi"
         elif tofu_count == indian_count:
             img = "images/acai.png"

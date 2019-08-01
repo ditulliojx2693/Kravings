@@ -213,15 +213,3 @@ html{
   margin-left: auto;
   margin-right:auto;
 }
-
-/* Login Page css stuff */
-
-#loginText{
-  text-align: center;
-}
-#loginButton{
-
-}
-#signUpButton{
-  text-decoration: none;
-}

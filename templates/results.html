@@ -10,7 +10,6 @@
         background-image:url("images/background.jpg");
       }
     </style>
-    <link rel="icon" type="image/png" href="images/logo_burger.png">
   </head>
   <nav>
     <div class="header">
@@ -27,8 +26,9 @@
       <img src="{{img}}" alt="food_image" class="foodDisplay">
       <center><h2 style="padding-bottom: 40px;">{{fooditem}}!</h2></center>
       <center><h3 style="padding-bottom: 40px;">Click Here to Find Somewhere to Get {{fooditem}}!</h3></center>
-      <button type="button" class="randomize" onclick="randomizeFood()">Randomize</button>
     </div>
+    <form action="/results"><button type="submit" class="submit">Randomize</button></form>
+
   </body>
   <div class="footer">
     <p class="footerText">Google CSSI 2019</p>
