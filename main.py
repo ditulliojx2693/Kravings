@@ -251,8 +251,7 @@ class YelpPage(webapp2.RequestHandler):
         req=requests.get(url=endpoint, params=params, headers=headers)
         business_data = req.json()
         print(business_data.keys())
-        for biz in business_data['businesses']:
-            print (biz['name'])
+        #for biz in business_data['businesses']:
         yelp_dict = {
             'businesses': business_data,
             "firstname": self.request.cookies.get("firstname"),
