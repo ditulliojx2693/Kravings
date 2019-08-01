@@ -184,10 +184,12 @@ class YelpPage(webapp2.RequestHandler):
         for biz in business_data['businesses']:
             print (biz['name'])
         yelp_dict = {
-            'businesses': business_data
+            'businesses': business_data,
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
         }
         yelppage_template = the_jinja_env.get_template('templates/YelpPage.html')
-        self.response.write(yelppage_template.render(business_data))
+        self.response.write(yelppage_template.render(yelp_dict))
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
