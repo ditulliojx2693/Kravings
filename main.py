@@ -180,7 +180,7 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/indian.png"
             fooditem = "Indian Food"
         elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > indian_count:
-            img ="https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
+            img ="images/crab.png"
             fooditem = "Seafood"
         elif burger_count == dessert_count and burger_count > indian_count and burger_count > seafood_count and burger_count > tofu_count:
             img = "images/fries.png"
