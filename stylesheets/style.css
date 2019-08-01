@@ -122,19 +122,28 @@ nav{
   margin-right: auto;
 }
 .linkedin{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttonElements{
   height:40px;
   border-radius: 10%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+#twitter{
+  margin-left: 10px;
+}
+#instagram{
+  margin-left:10px;
+  border-radius: 25%;
 }
 .bios{
   text-align:center;
   padding-left:2%;
   padding-right: 2%;
 }
-.linkedin:hover{
+.buttonElements:hover{
   opacity:0.7;
 }
 
