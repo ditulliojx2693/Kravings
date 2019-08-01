@@ -133,7 +133,7 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Tofu"
         elif ran_num == 10:
             img = "images/ice_cream.png"
-            fooditem = "Ice Cream"
+            fooditem = "Gelato"
         elif ran_num == 11:
             img = "images/churros.png"
             fooditem = "Churros"
@@ -172,7 +172,7 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "A Burger"
         elif dessert_count > burger_count and dessert_count > tofu_count and dessert_count > indian_count and dessert_count > seafood_count:
             img = "images/ice_cream.png"
-            fooditem = "Ice Cream"
+            fooditem = "Gelato"
         elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > indian_count and tofu_count > seafood_count:
             img = "images/salad.png"
             fooditem = "Salad"
