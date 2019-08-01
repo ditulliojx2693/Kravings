@@ -21,7 +21,9 @@
     </div>
   </nav>
   <body>
-    <h1>{yelp_dict}</h1>
+    {% for biz in businesses['businesses'] %}
+    <h1>{{biz['name']}}</h1>
+    {%endfor%}
   </body>
   <div class="footer">
     <div class="footerText2"> {{firstname}} {{lastname}} is logged in </div> <div class="footerText">Google CSSI 2019</div>
