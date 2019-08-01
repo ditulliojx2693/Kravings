@@ -130,24 +130,21 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/indian.png"
             fooditem = "Indian Food"
         elif ran_num == 9:
-            img = "images/tofu.png"
-            fooditem = "Tofu"
-        elif ran_num == 10:
             img = "images/ice_cream.png"
             fooditem = "Gelato"
-        elif ran_num == 11:
+        elif ran_num == 10:
             img = "images/churros.png"
             fooditem = "Churros"
-        elif ran_num == 12:
+        elif ran_num == 11:
             img = "images/sushi.png"
             fooditem = "Sushi"
-        elif ran_num == 13:
+        elif ran_num == 12:
             img = "images/acai.png"
             fooditem = "Acai Bowl"
-        elif ran_num == 14:
+        elif ran_num == 13:
             img = "images/soup.png"
             fooditem = "Soup"
-        elif ran_num == 15:
+        elif ran_num == 14:
             img = "images/poke.png"
             fooditem = "Poke"
         else:
