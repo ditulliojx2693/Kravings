@@ -55,13 +55,28 @@ nav{
   right:0;
   bottom: 0;
   margin-top:40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .footerText{
   font-size: 10px;
   text-align: right;
   padding-right: 1%;
-  padding-bottom: 0;
   font-family: 'Lato', sans-serif;
+  white-space:nowrap;
+  padding-bottom:10px;
+  padding-top: 10px;
+}
+.footerText2{
+  text-align:left;
+  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  padding-left: 1%;
+  display: flex;
+  white-space:nowrap;
+  padding-bottom:10px;
+  padding-top: 10px;
 }
 /* about us page css */
 
