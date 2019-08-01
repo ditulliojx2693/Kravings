@@ -196,9 +196,7 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Fish Tacos"
         elif  dessert_count == tofu_count:
             img = "images/boba.png"
-        elif  dessert_count == tofu_count and dessert_count > burger_count and dessert_count > indian_count and dessert_count > seafood_count:
-            img = "images/boba"
-            fooditem= "Boba"
+            fooditem = "Boba"
         elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
             img = "images/churros.png"
             fooditem = "Churros"
