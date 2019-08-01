@@ -130,24 +130,21 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/indian.png"
             fooditem = "Indian Food"
         elif ran_num == 9:
-            img = "images/tofu.png"
-            fooditem = "Tofu"
-        elif ran_num == 10:
             img = "images/ice_cream.png"
             fooditem = "Gelato"
-        elif ran_num == 11:
+        elif ran_num == 10:
             img = "images/churros.png"
             fooditem = "Churros"
-        elif ran_num == 12:
+        elif ran_num == 11:
             img = "images/sushi.png"
             fooditem = "Sushi"
-        elif ran_num == 13:
+        elif ran_num == 12:
             img = "images/acai.png"
             fooditem = "Acai Bowl"
-        elif ran_num == 14:
+        elif ran_num == 13:
             img = "images/soup.png"
             fooditem = "Soup"
-        elif ran_num == 15:
+        elif ran_num == 14:
             img = "images/poke.png"
             fooditem = "Poke"
         else:
@@ -155,7 +152,9 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Chicken Nuggets"
         food_display_dict = {
             "img": img,
-            "fooditem": fooditem
+            "fooditem": fooditem,
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
         }
         self.response.write(results_template.render(food_display_dict))
     def post(self):
@@ -247,13 +246,12 @@ class YelpPage(webapp2.RequestHandler):
         api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
         endpoint = 'https://api.yelp.com/v3/businesses/search'
         headers = {'Authorization': 'Bearer %s' % api_key}
-        params = {'term':fooditem,'limit':10,'radius':10000,'location':'Seattle'}
+        params = {'term':fooditem,'limit':10,'radius':10000,'location':'Kirkland'}
         requests_toolbelt.adapters.appengine.monkeypatch()
         req=requests.get(url=endpoint, params=params, headers=headers)
         business_data = req.json()
         print(business_data.keys())
-        for biz in business_data['businesses']:
-            print (biz['name'])
+        #for biz in business_data['businesses']:
         yelp_dict = {
             'businesses': business_data,
             "firstname": self.request.cookies.get("firstname"),
