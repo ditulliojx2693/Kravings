@@ -19,9 +19,6 @@ function ifChecked () {
     else{
       falseCount1 += 1;
     }};
-    if (falseCount1 == input1.length){
-      alert("You forgot a box!");
-    };
   let falseCount2 = 0;
   for (b = 0; b < input2.length; b++){
     let check2 = input2[b].checked;
@@ -111,9 +108,6 @@ function ifChecked () {
   };
   if (falseCount1 == input1.length || falseCount2 == input2.length || falseCount3 == input3.length || falseCount4 == input4.length || falseCount5 == input5.length || falseCount6 == input6.length || falseCount7 == input7.length || falseCount8 == input8.length || falseCount9 == input9.length || falseCount10 == input10.length){
     alert("You forgot a box!");
-    if (falseCount2 == input2.length){
-      alert("You forgot a box!");
-    };
   }
   else{
     quiz[0].submit();
