@@ -101,6 +101,7 @@ class ResultsPage(webapp2.RequestHandler):
     def get(self):
         results_template = the_jinja_env.get_template('templates/results.html')
         img = ""
+        global fooditem
         fooditem = ""
         ran_num = random.randint(1,16)
         print(ran_num)
