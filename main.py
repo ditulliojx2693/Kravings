@@ -24,12 +24,13 @@ class CssiUser(ndb.Model):
 class LoginPage(webapp2.RequestHandler):
     def post(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
-        first_name = self.request.get('first_name')
-        last_name = self.request.get('last_name')
-        username = self.request.get('username')
-        password = self.request.get('password')
-        secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password, loggedin = False)
-        secure_data.put()
+        if self.request.get('first_name') != "":
+            first_name = self.request.get('first_name')
+            last_name = self.request.get('last_name')
+            username = self.request.get('username')
+            password = self.request.get('password')
+            secure_data = UserData(first_name = first_name, last_name = last_name, username = username, password = password, loggedin = False)
+            secure_data.put()
         self.response.write(login_template.render())
     def get(self):
         login_template = the_jinja_env.get_template('templates/login2.html')
