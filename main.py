@@ -155,7 +155,9 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Chicken Nuggets"
         food_display_dict = {
             "img": img,
-            "fooditem": fooditem
+            "fooditem": fooditem,
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
         }
         self.response.write(results_template.render(food_display_dict))
     def post(self):
