@@ -22,7 +22,10 @@
   </nav>
   <body>
     {% for biz in businesses['businesses'] %}
-    <h1>{{biz['name']}}</h1>
+    <a href="{{biz['url']}}"><h1>{{biz['name']}}</h1></a>
+    <ul>
+      <li>{{biz['direct_address']}}</li>
+    </ul>
     {%endfor%}
   </body>
   <div class="footer">
