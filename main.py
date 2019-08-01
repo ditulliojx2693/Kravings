@@ -196,16 +196,12 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Fish Tacos"
         elif  dessert_count == tofu_count:
             img = "images/boba.png"
-        elif  dessert_count == tofu_count and dessert_count > burger_count and dessert_count > indian_count and dessert_count > seafood_count:
-            img = "images/boba"
             fooditem= "Boba"
         elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
             img = "images/churros.png"
             fooditem = "Churros"
         elif dessert_count == seafood_count:
             img = "images/sushi.png"
-        elif dessert_count == seafood_count and dessert_count > indian_count and dessert_count > tofu_count and dessert_count > burger_count:
-            img = "images/sushi"
             fooditem = "Sushi"
         elif tofu_count == indian_count and tofu_count > seafood_count and tofu_count > dessert_count and tofu_count > burger_count:
             img = "images/acai.png"
