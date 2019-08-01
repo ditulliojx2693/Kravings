@@ -106,34 +106,34 @@ class ResultsPage(webapp2.RequestHandler):
         elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > indian_count:
             img ="https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
             fooditem = "Seafood"
-        elif burger_count == dessert_count:
+        elif burger_count == dessert_count and burger_count > indian_count and burger_count > seafood_count and burger_count > tofu_count:
             img = "images/fries.png"
             fooditem = "Fries"
-        elif burger_count == tofu_count:
+        elif burger_count == tofu_count and burger_count > dessert_count and burger_count > indian_count  and burger_count > seafood_count:
             img = "images/veggie.png"
             fooditem = "Veggie Burger"
-        elif burger_count == indian_count:
+        elif burger_count == indian_count and burger_count > tofu_count and burger_count > dessert_count and burger_count > seafood_count:
             img = "images/chinese.png"
             fooditem = "Chinese Food"
-        elif burger_count == seafood_count:
+        elif burger_count == seafood_count and burger_count > tofu_count and burger_count > indian_count and burger_count > dessert_count:
             img = "images/taco.png"
             fooditem = "Fish Tacos"
-        elif  dessert_count == tofu_count:
+        elif  dessert_count == tofu_count and dessert_count > burger_count and dessert_count > indian_count and dessert_count > seafood_count:
             img = "images/boba"
             fooditem= "Boba"
-        elif dessert_count == indian_count:
+        elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
             img = "images/churros.png"
             fooditem = "Churros"
-        elif dessert_count == seafood_count:
+        elif dessert_count == seafood_count and dessert_count > indian_count and dessert_count > tofu_count and dessert_count > burger_count:
             img = "images/sushi"
             fooditem = "Sushi"
-        elif tofu_count == indian_count:
+        elif tofu_count == indian_count and tofu_count > seafood_count and tofu_count > dessert_count and tofu_count > burger_count:
             img = "images/acai.png"
             fooditem = "Acai Bowl"
-        elif tofu_count == seafood_count:
+        elif tofu_count == seafood_count and tofu_count > indian_count and tofu_count > dessert_count and tofu_count > burger_count:
             img = "images/soup.png"
             fooditem= "Soup"
-        elif indian_count == seafood_count:
+        elif indian_count == seafood_count and indian_count > tofu_count and indian_count > dessert_count and indian_count > burger_count:
             img = "images/poke.png"
             fooditem = "Poke"
         else:
