@@ -48,11 +48,22 @@ class HomePage(webapp2.RequestHandler):
             userInfoKey = check_cred[0].key.get()
             userInfoKey.loggedin = True
             userInfoKey.put()
-            self.response.set_cookie("loggedin", userInfoKey.username)
-            self.response.write(home_template.render())
+            userInfo = check_cred[0]
+            self.response.set_cookie("loggedin", userInfo.username)
+            first_name = self.response.set_cookie("firstname", userInfo.first_name)
+            self.response.set_cookie("lastname", userInfo.last_name)
+            user_dict = {
+                "firstname": self.request.cookies.get("firstname"),
+                "lastname": self.request.cookies.get("lastname"),
+            }
+            self.response.write(home_template.render(user_dict))
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
-        self.response.write(home_template.render())
+        user_dict = {
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
+        }
+        self.response.write(home_template.render(user_dict))
 
 class SignInPage(webapp2.RequestHandler):
     def post(self):
@@ -75,6 +86,8 @@ class QuizPage(webapp2.RequestHandler):
                 "q8": "Do you want to eat something healthy and light?",
                 "q9": "Would you like to try food that uses many different kinds of seasonings?",
                 "q10": "Are you a fan of seafood?",
+                "firstname": self.request.cookies.get("firstname"),
+                "lastname": self.request.cookies.get("lastname"),
             }
             self.response.write(quiz_template.render(questions_dict))  # the response
         else:
@@ -141,14 +154,20 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Chicken Nuggets"
         food_display_dict = {
             "img": img,
-            "fooditem": fooditem
+            "fooditem": fooditem,
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
         }
         self.response.write(results_template.render(food_display_dict))   # the response
 
 class AboutUsPage(webapp2.RequestHandler):
     def get(self):  # for a get request
         aboutUs_template = the_jinja_env.get_template('templates/AboutUs.html')
-        self.response.write(aboutUs_template.render())  # the response
+        user_dict = {
+            "firstname": self.request.cookies.get("firstname"),
+            "lastname": self.request.cookies.get("lastname"),
+        }
+        self.response.write(aboutUs_template.render(user_dict))  # the response
         #self.response.write("about us working")
 
 class YelpPage(webapp2.RequestHandler):
