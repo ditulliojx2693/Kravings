@@ -123,7 +123,7 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/fries.png"
             fooditem = "Fries"
         elif ran_num == 7:
-            img = "https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
+            img = "images/crab.png"
             fooditem = "Seafood"
         elif ran_num == 8:
             img = "images/indian.png"
@@ -180,7 +180,7 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/indian.png"
             fooditem = "Indian Food"
         elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > indian_count:
-            img ="https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
+            img ="images/crab.png"
             fooditem = "Seafood"
         elif burger_count == dessert_count and burger_count > indian_count and burger_count > seafood_count and burger_count > tofu_count:
             img = "images/fries.png"
@@ -196,7 +196,11 @@ class ResultsPage(webapp2.RequestHandler):
             fooditem = "Fish Tacos"
         elif  dessert_count == tofu_count:
             img = "images/boba.png"
+<<<<<<< HEAD
             fooditem= "Boba"
+=======
+            fooditem = "Boba"
+>>>>>>> 12340c7d8c991225b1e3bf2cd547d7faf2aee0f0
         elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
             img = "images/churros.png"
             fooditem = "Churros"
