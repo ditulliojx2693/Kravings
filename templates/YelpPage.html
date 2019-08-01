@@ -21,12 +21,16 @@
     </div>
   </nav>
   <body>
+    <div class="topSpacer"></div>
     {% for biz in businesses['businesses'] %}
-    <a href="{{biz['url']}}"><h1>{{biz['name']}}</h1></a>
-    <ul>
-      <li>{{biz['direct_address']}}</li>
+    <a href="{{biz['url']}}" class="yelpNameResults"><h1>{{biz['name']}}</h1></a>
+    <ul class="resultsList">
+      <li>Address: {{biz['location']['display_address'][0]}}, {{biz['location']['display_address'][1]}} {{biz['location']['display_address'][2]}}</li>
+      <li>Phone number: {{biz['display_phone']}}</li>
+      <li>Rating: {{biz['rating']}}</li>
     </ul>
     {%endfor%}
+    <div class="bottomSpacer"></div>
   </body>
   <div class="footer">
     <div class="footerText2"> {{firstname}} {{lastname}} is logged in </div> <div class="footerText">Google CSSI 2019</div>

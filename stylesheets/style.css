@@ -286,3 +286,21 @@ html{
 #logOut:hover{
   text-decoration:underline;
 }
+
+/* Yelp Page */
+.yelpNameResults{
+  text-decoration:none;
+  color:#f5e1da;
+}
+.yelpNameResults:hover{
+  text-decoration: underline;
+}
+.resultsList{
+  list-style:none;
+}
+.topSpacer{
+  padding-top:50px;
+}
+.bottomSpacer{
+  padding-bottom: 20px;
+}
