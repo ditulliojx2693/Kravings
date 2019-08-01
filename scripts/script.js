@@ -159,12 +159,3 @@ function signUpCheck(){
     signUp.submit()
   }
 }
-
-function randomizeFood(){
-  randomNumber = Math.floor(Math.random() * 10) + 1;
-  alert("Working")
-  if (randomNumber == 1){
-    randImg = "images/burger.png"
-    randFoodItem = "A Burger"
-  }
-}
