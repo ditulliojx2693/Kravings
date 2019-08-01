@@ -123,7 +123,7 @@ class ResultsPage(webapp2.RequestHandler):
             img = "images/fries.png"
             fooditem = "Fries"
         elif ran_num == 7:
-            img = "https://media.istockphoto.com/vectors/sea-crab-icon-vector-id869408302?k=6&m=869408302&s=612x612&w=0&h=wcBuLlH_oe7gAzb5XF_uPWxzBY88KRAAiwzsj-76yWs="
+            img = "images/crab.png"
             fooditem = "Seafood"
         elif ran_num == 8:
             img = "images/indian.png"
