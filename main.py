@@ -46,6 +46,11 @@ class HomePage(webapp2.RequestHandler):
         if len(check_cred) == 0:
             self.response.write(redirect_template.render())
         else:
+            user = check_cred[0].key.get()
+            userInfo = check_cred[0]
+            print(self.request.cookies.get("loggedin"))
+            user.loggedin = True
+            user.put()
             self.response.set_cookie("loggedin", userInfo.username)
             self.response.set_cookie("firstname", userInfo.first_name)
             self.response.set_cookie("lastname", userInfo.last_name)
