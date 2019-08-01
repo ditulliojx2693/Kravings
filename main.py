@@ -44,18 +44,23 @@ class HomePage(webapp2.RequestHandler):
         check_cred = UserData.query().filter(UserData.username == username_attempt, UserData.password == password_attempt).fetch(1)
         if len(check_cred) == 0:
             self.response.write(redirect_template.render())
+            user = check_cred[0].key.get()
+            user.loggedin = False
+            user.put()
         else:
-            userInfoKey = check_cred[0].key.get()
-            userInfoKey.loggedin = True
-            userInfoKey.put()
+            user = check_cred[0].key.get()
             userInfo = check_cred[0]
+            print(self.request.cookies.get("loggedin"))
+            user.loggedin = True
+            user.put()
             self.response.set_cookie("loggedin", userInfo.username)
-            first_name = self.response.set_cookie("firstname", userInfo.first_name)
+            self.response.set_cookie("firstname", userInfo.first_name)
             self.response.set_cookie("lastname", userInfo.last_name)
             user_dict = {
-                "firstname": self.request.cookies.get("firstname"),
-                "lastname": self.request.cookies.get("lastname"),
+                "firstname": userInfo.first_name,
+                "lastname": userInfo.last_name,
             }
+            print(user_dict)
             self.response.write(home_template.render(user_dict))
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
@@ -169,6 +174,13 @@ class AboutUsPage(webapp2.RequestHandler):
         }
         self.response.write(aboutUs_template.render(user_dict))  # the response
         #self.response.write("about us working")
+class RedirectPage(webapp2.RequestHandler):
+    def get(self):
+        redirect_template = the_jinja_env.get_template('templates/redirect.html')
+        self.response.delete_cookie("loggedin")
+        self.response.delete_cookie("firstname")
+        self.response.delete_cookie("lastname")
+        self.response.write(redirect_template.render())
 
 class YelpPage(webapp2.RequestHandler):
     def get(self):
@@ -199,4 +211,5 @@ app = webapp2.WSGIApplication([
     ('/results', ResultsPage),
     ('/yelppage', YelpPage),
     ('/aboutus', AboutUsPage),
+    ('/logout', RedirectPage),
 ], debug=True)

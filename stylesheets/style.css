@@ -142,7 +142,7 @@ nav{
 
 .topic{
   text-align:center;
-  padding-top: 50px;
+  padding-top: 40px;
   min-height: 100%;
 }
 html{
@@ -255,4 +255,17 @@ html{
 }
 .yelp:hover{
   text-decoration: underline;
+}
+.signOut{
+  padding-top:10px;
+  padding-left: 92%;
+}
+#logOut{
+  background-color: transparent;
+  border-style:none;
+  color:#476268;
+  font-size: 12px;
+}
+#logOut:hover{
+  text-decoration:underline;
 }
