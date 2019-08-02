@@ -11,7 +11,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData
-
+import socket
 
 the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -242,11 +242,12 @@ class RedirectPage(webapp2.RequestHandler):
 
 class YelpPage(webapp2.RequestHandler):
     def get(self):
+        city = self.request.headers['X-AppEngine-City']
         ClientId = 'Gt46dGLdwKMdznkcqbizJQ'
         api_key = 'eJCV1UT9rP5M8_I8QrS2KmdyC7D3dnBWL8B9KxkwhZJgypDE9cafXOvTvz-eLXz5ghkAJ2pllHIT_0P1ye2NueygCLZmmyz4cQ2XQMnc7lu-piHWLcBytmRi8m1AXXYx'
         endpoint = 'https://api.yelp.com/v3/businesses/search'
         headers = {'Authorization': 'Bearer %s' % api_key}
-        params = {'term':fooditem,'limit':10,'radius':10000,'location':'Kirkland'}
+        params = {'term':fooditem,'limit':10,'radius':10000,'location': city}
         requests_toolbelt.adapters.appengine.monkeypatch()
         req=requests.get(url=endpoint, params=params, headers=headers)
         business_data = req.json()
