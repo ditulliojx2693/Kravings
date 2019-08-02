@@ -198,13 +198,13 @@ class ResultsPage(webapp2.RequestHandler):
         elif burger_count == seafood_count and burger_count > tofu_count and burger_count > indian_count and burger_count > dessert_count:
             img = "images/taco.png"
             fooditem = "Fish Tacos"
-        elif  dessert_count == tofu_count:
+        elif  dessert_count == tofu_count and dessert_count > seafood_count and dessert_count > indian_count and dessert_count > burger_count:
             img = "images/boba.png"
             fooditem = "Boba"
         elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
             img = "images/churros.png"
             fooditem = "Churros"
-        elif dessert_count == seafood_count:
+        elif dessert_count == seafood_count and dessert_count > tofu_count and dessert_count > indian_count and dessert_count > burger_count:
             img = "images/sushi.png"
             fooditem = "Sushi"
         elif tofu_count == indian_count and tofu_count > seafood_count and tofu_count > dessert_count and tofu_count > burger_count:
