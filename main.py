@@ -219,9 +219,9 @@ class ResultsPage(webapp2.RequestHandler):
         else:
             img = "images/nuggets.png"
             fooditem = "Chicken Nuggets"
-        img = self.request.get('img')
-        check_key = self.request.get(self.request.cookies.get("userkey"))
-        old_results = OldResults(img = img, login_info = check_key)
+        old_img = img
+        check_key = self.request.cookies.get("userKey")
+        old_results = OldResults(img = old_img, login_info = check_key)
         old_results.put()
         food_display_dict = {
             "img": img,
