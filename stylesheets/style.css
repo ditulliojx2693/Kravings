@@ -32,14 +32,12 @@ nav{
   margin-bottom: 0;
   padding-left:20px;
   padding-right: 20px;
-  overflow-x:hidden;
-  overflow-y: hidden;
-  padding-top: 3%;
-  padding-bottom: 10%;
+  padding-top: 8px;
+  padding-bottom: 15px;
   height: 100%;
 }
 .tab:hover{
-  background-color:#34474c
+  background-color:#34474c;
 }
 .nav{
   margin: 0;
