@@ -302,3 +302,16 @@ html{
 .bottomSpacer{
   padding-bottom: 20px;
 }
+.pastFoods{
+  width: 70px;
+}
+.spacer{
+  margin-top:10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right:10px;
+}
+.alignResults{
+  display: flex;
+  justify-content: space-around;
+}

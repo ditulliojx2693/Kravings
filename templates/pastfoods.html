@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Past Foods</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo_burger.png">
+    <style media="screen">
+      html{
+        background-image:url("images/background.jpg");
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="header">
+        <img src="images/logo.png" alt="Kravings" id="kravings">
+        <form action="/home"><button type="submit" class="tab">Home</button></form>
+        <form action="/aboutus" ><button type="submit" class="tab">About Us</button></form>
+        <form action="/quiz" ><button type="submit" class="tab">Quiz</button></form>
+        <form action="/results" ><button type="submit" class="tab">Randomize</button></form>
+        <form action="/pastfoods" method="get"><button type="submit" class="tab">Prior Results</button></form>
+      </div>
+    </nav>
+    <div class="home">
+    <h1 class="topic"> Past Food Suggestions:</h1>
+    <table class="alignResults">
+        <tr>
+          {% for i, food in all_foods %}
+          {% if i%6 == 0 %} </tr> <tr> {% endif %}
+        <td>
+              <div class="spacer"><img src="{{food.img}}" alt="food_img" class="pastFoods"></div>
+        </td>
+        {% endfor %}
+      </tr>
+          </table>
+  </body>
+</html>

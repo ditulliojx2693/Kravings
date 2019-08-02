@@ -6,3 +6,7 @@ class UserData(ndb.Model):
     username = ndb.StringProperty()
     password = ndb.StringProperty()
     loggedin = ndb.BooleanProperty()
+
+class OldResults(ndb.Model):
+    img = ndb.StringProperty()
+    login_info = ndb.StringProperty()

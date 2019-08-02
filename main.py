@@ -10,7 +10,7 @@ from google.appengine.api import urlfetch
 from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
-from model import UserData
+from model import UserData, OldResults
 import socket
 
 the_jinja_env = jinja2.Environment(
@@ -49,9 +49,11 @@ class HomePage(webapp2.RequestHandler):
         else:
             user = check_cred[0].key.get()
             userInfo = check_cred[0]
-            print(self.request.cookies.get("loggedin"))
             user.loggedin = True
             user.put()
+            # self.response.set_cookie("userkey", userInfo.key)
+            print(userInfo.key)
+            self.response.set_cookie("userKey", str(userInfo.key))
             self.response.set_cookie("loggedin", userInfo.username)
             self.response.set_cookie("firstname", userInfo.first_name)
             self.response.set_cookie("lastname", userInfo.last_name)
@@ -59,7 +61,6 @@ class HomePage(webapp2.RequestHandler):
                 "firstname": userInfo.first_name,
                 "lastname": userInfo.last_name,
             }
-            print(user_dict)
             self.response.write(home_template.render(user_dict))
     def get(self):
         home_template = the_jinja_env.get_template('templates/home.html')
@@ -104,7 +105,6 @@ class ResultsPage(webapp2.RequestHandler):
         global fooditem
         fooditem = ""
         ran_num = random.randint(1,16)
-        print(ran_num)
         if ran_num == 1:
             img = "images/burger.png"
             fooditem = "Burger"
@@ -150,6 +150,10 @@ class ResultsPage(webapp2.RequestHandler):
         else:
             img = "images/nuggets.png"
             fooditem = "Chicken Nuggets"
+        old_img = img
+        check_key = self.request.cookies.get("userKey")
+        old_results = OldResults(img = old_img, login_info = check_key)
+        old_results.put()
         food_display_dict = {
             "img": img,
             "fooditem": fooditem,
@@ -215,6 +219,10 @@ class ResultsPage(webapp2.RequestHandler):
         else:
             img = "images/nuggets.png"
             fooditem = "Chicken Nuggets"
+        img = self.request.get('img')
+        check_key = self.request.get(self.request.cookies.get("userkey"))
+        old_results = OldResults(img = img, login_info = check_key)
+        old_results.put()
         food_display_dict = {
             "img": img,
             "fooditem": fooditem,
@@ -260,6 +268,16 @@ class YelpPage(webapp2.RequestHandler):
         }
         yelppage_template = the_jinja_env.get_template('templates/YelpPage.html')
         self.response.write(yelppage_template.render(yelp_dict))
+class PastFoodsPage(webapp2.RequestHandler):
+    def get(self):
+        food_template = the_jinja_env.get_template('templates/pastfoods.html')
+        if_logged = self.request.cookies.get("userKey")
+        past_foods = OldResults.query().filter(if_logged == OldResults.login_info).fetch()
+        food_dict = {
+            "past_foods": past_foods,
+            "all_foods": [(i,m) for i, m in enumerate(past_foods)]
+        }
+        self.response.write(food_template.render(food_dict))
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', LoginPage),
@@ -270,4 +288,5 @@ app = webapp2.WSGIApplication([
     ('/yelppage', YelpPage),
     ('/aboutus', AboutUsPage),
     ('/logout', RedirectPage),
+    ('/pastfoods',PastFoodsPage),
 ], debug=True)
