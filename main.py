@@ -275,7 +275,18 @@ class PastFoodsPage(webapp2.RequestHandler):
         past_foods = OldResults.query().filter(if_logged == OldResults.login_info).fetch()
         food_dict = {
             "past_foods": past_foods,
-            "all_foods": [(i,m) for i, m in enumerate(past_foods)]
+            "all_foods": [(i,m) for i, m in enumerate(past_foods)],
+        }
+        self.response.write(food_template.render(food_dict))
+    def post(self):
+        food_template = the_jinja_env.get_template('templates/pastfoods.html')
+        if_logged = self.request.cookies.get("userKey")
+        past_foods = OldResults.query().filter(if_logged == OldResults.login_info).fetch()
+        for food in past_foods:
+            food.key.delete()
+        past_foods = OldResults.query().filter(if_logged == OldResults.login_info).fetch()
+        food_dict = {
+            "all_foods": [(i,m) for i, m in enumerate(past_foods)],
         }
         self.response.write(food_template.render(food_dict))
 # the app configuration section
