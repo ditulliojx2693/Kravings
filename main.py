@@ -81,16 +81,16 @@ class QuizPage(webapp2.RequestHandler):
         redirect_template = the_jinja_env.get_template('templates/redirect.html')
         if self.request.cookies.get("loggedin"):
             questions_dict = {
-                "q1": "Do you want something filling and unhealthy?",
-                "q2": "Do you want something sweet?",
-                "q3": "Would you like something light and healthy?",
-                "q4": "Are you looking for spicy food?",
-                "q5": "Would you like something rich and flavorful?",
-                "q6": "Do you want something you can easily take to go?",
-                "q7": "Would you like a dessert?",
-                "q8": "Do you want to eat something served room temperature?",
-                "q9": "Would you like to try food that uses many different kinds of seasonings?",
-                "q10": "Do you want food typically served hot?",
+                "q1": "You want something filling and unhealthy.",
+                "q2": "You want something sweet.",
+                "q3": "You would like something light and healthy.",
+                "q4": "You're looking for spicy food.",
+                "q5": "You would like something rich and flavorful.",
+                "q6": "You want something you can easily take to go.",
+                "q7": "You want a dessert.",
+                "q8": "You want to eat something served room temperature.",
+                "q9": "You want to try food that uses many different kinds of seasonings.",
+                "q10": "You want food typically served hot.",
                 "firstname": self.request.cookies.get("firstname"),
                 "lastname": self.request.cookies.get("lastname"),
             }
