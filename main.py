@@ -7,7 +7,6 @@ import json
 import random
 from google.appengine.ext import vendor
 from google.appengine.api import urlfetch
-from flask import Flask, redirect, url_for, render_template, request
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from model import UserData, OldResults
@@ -101,59 +100,33 @@ class QuizPage(webapp2.RequestHandler):
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
         results_template = the_jinja_env.get_template('templates/results.html')
-        img = ""
+        food_arr = [
+        ["images/burger.png","Burger"],
+        ["images/chinese.png","Chinese Food"],
+        ["images/taco.png","Taco"],
+        ["images/boba.png","Boba"],
+        ["images/veggie.png","Veggie Burger"],
+        ["images/fries.png","Fries"],
+        ["images/crab.png", "Seafood"],
+        ["images/indian.png","Indian Food"],
+        ["images/ice_cream.png","Gelato"],
+        ["images/churros.png","Churros"],
+        ["images/sushi.png","Sushi"],
+        ["images/acai.png","Acai Bowl"],
+        ["images/soup.png","Soup"],
+        ["images/poke.png","Poke"],
+        ["images/nuggets.png","Chicken Nuggets"]
+        ]
+        ran_num = random.randint(0,14)
         global fooditem
-        fooditem = ""
-        ran_num = random.randint(1,16)
-        if ran_num == 1:
-            img = "images/burger.png"
-            fooditem = "Burger"
-        elif ran_num == 2:
-            img = "images/chinese.png"
-            fooditem = "Chinese Food"
-        elif ran_num == 3:
-            img = "images/taco.png"
-            fooditem = "Taco"
-        elif ran_num == 4:
-            img = "images/boba.png"
-            fooditem = "Boba"
-        elif ran_num == 5:
-            img = "images/veggie.png"
-            fooditem = "Veggie Burger"
-        elif ran_num == 6:
-            img = "images/fries.png"
-            fooditem = "Fries"
-        elif ran_num == 7:
-            img = "images/crab.png"
-            fooditem = "Seafood"
-        elif ran_num == 8:
-            img = "images/indian.png"
-            fooditem = "Indian Food"
-        elif ran_num == 9:
-            img = "images/ice_cream.png"
-            fooditem = "Gelato"
-        elif ran_num == 10:
-            img = "images/churros.png"
-            fooditem = "Churros"
-        elif ran_num == 11:
-            img = "images/sushi.png"
-            fooditem = "Sushi"
-        elif ran_num == 12:
-            img = "images/acai.png"
-            fooditem = "Acai Bowl"
-        elif ran_num == 13:
-            img = "images/soup.png"
-            fooditem = "Soup"
-        elif ran_num == 14:
-            img = "images/poke.png"
-            fooditem = "Poke"
-        else:
-            img = "images/nuggets.png"
-            fooditem = "Chicken Nuggets"
+        img = food_arr[ran_num][0]
+        fooditem = food_arr[ran_num][1]
+        #storing data in the database
         old_img = img
         check_key = self.request.cookies.get("userKey")
         old_results = OldResults(img = old_img, login_info = check_key)
         old_results.put()
+        #displaying info by logging to a dictionary
         food_display_dict = {
             "img": img,
             "fooditem": fooditem,
@@ -165,64 +138,91 @@ class ResultsPage(webapp2.RequestHandler):
         results_template = the_jinja_env.get_template('templates/results.html')
         burger_count = int(self.request.get("burger1")) + int(self.request.get("burger2"))
         dessert_count = int(self.request.get("ice_cream1")) + int(self.request.get("ice_cream2"))
-        tofu_count = int(self.request.get("tofu1")) + int(self.request.get("tofu2"))
+        salad_count = int(self.request.get("tofu1")) + int(self.request.get("tofu2"))
         indian_count = int(self.request.get("beef1")) + int(self.request.get("beef2"))
         seafood_count = int(self.request.get("seafood1")) + int(self.request.get("seafood2"))
         global fooditem
         fooditem = ""
         img = ""
-        if burger_count > dessert_count and burger_count > tofu_count and burger_count > indian_count and burger_count > seafood_count:
-            img = "images/burger.png"
-            fooditem = "A Burger"
-        elif dessert_count > burger_count and dessert_count > tofu_count and dessert_count > indian_count and dessert_count > seafood_count:
-            img = "images/ice_cream.png"
-            fooditem = "Gelato"
-        elif tofu_count > burger_count and tofu_count > dessert_count and tofu_count > indian_count and tofu_count > seafood_count:
-            img = "images/salad.png"
-            fooditem = "Salad"
-        elif indian_count > burger_count and indian_count > dessert_count and indian_count > tofu_count and indian_count > seafood_count:
-            img = "images/indian.png"
-            fooditem = "Indian Food"
-        elif seafood_count > burger_count and seafood_count > dessert_count and seafood_count > tofu_count and seafood_count > indian_count:
-            img ="images/crab.png"
-            fooditem = "Seafood"
-        elif burger_count == dessert_count and burger_count > indian_count and burger_count > seafood_count and burger_count > tofu_count:
-            img = "images/fries.png"
-            fooditem = "Fries"
-        elif burger_count == tofu_count and burger_count > dessert_count and burger_count > indian_count  and burger_count > seafood_count:
-            img = "images/veggie.png"
-            fooditem = "Veggie Burger"
-        elif burger_count == indian_count and burger_count > tofu_count and burger_count > dessert_count and burger_count > seafood_count:
-            img = "images/chinese.png"
-            fooditem = "Chinese Food"
-        elif burger_count == seafood_count and burger_count > tofu_count and burger_count > indian_count and burger_count > dessert_count:
-            img = "images/taco.png"
-            fooditem = "Fish Tacos"
-        elif  dessert_count == tofu_count and dessert_count > seafood_count and dessert_count > indian_count and dessert_count > burger_count:
-            img = "images/boba.png"
-            fooditem = "Boba"
-        elif dessert_count == indian_count and dessert_count > tofu_count and dessert_count > seafood_count and dessert_count > burger_count:
-            img = "images/churros.png"
-            fooditem = "Churros"
-        elif dessert_count == seafood_count and dessert_count > tofu_count and dessert_count > indian_count and dessert_count > burger_count:
-            img = "images/sushi.png"
-            fooditem = "Sushi"
-        elif tofu_count == indian_count and tofu_count > seafood_count and tofu_count > dessert_count and tofu_count > burger_count:
-            img = "images/acai.png"
-            fooditem = "Acai Bowl"
-        elif tofu_count == seafood_count and tofu_count > indian_count and tofu_count > dessert_count and tofu_count > burger_count:
-            img = "images/soup.png"
-            fooditem= "Soup"
-        elif indian_count == seafood_count and indian_count > tofu_count and indian_count > dessert_count and indian_count > burger_count:
-            img = "images/poke.png"
-            fooditem = "Poke"
+        food_arr = [
+        [burger_count,"images/burger.png","A Burger"],
+        [dessert_count,"images/ice_cream.png","Gelato"],
+        [salad_count,"images/salad.png","Salad"],
+        [indian_count,"images/indian.png","Indian Food"],
+        [seafood_count,"images/crab.png","Seafood"]
+        ]
+        result_arr = []
+        highest_count = 0
+        for food in food_arr:
+            if highest_count < food[0]:
+                highest_count = food[0]
+            #findest the highest numeric results value of the foods
+        for food in food_arr:
+            if food[0] == highest_count:
+                result_arr.append(food)
+                #creating results list with all highest valued foods
+        if len(result_arr) == 1:
+            img = result_arr[0][1]
+            fooditem = result_arr[0][2]
+            #if only 1 highest food, display it
+        elif len(result_arr) == 2:
+            #if 2 highest foods, check which foods they are and display accordingly
+            burger = False
+            dessert = False
+            salad = False
+            indian = False
+            seafood = False
+            for item in result_arr:
+                if item[2] == "Burger":
+                    burger = True
+                elif item[2] == "Gelato":
+                    dessert = True
+                elif item[2] == "Salad":
+                    salad = True
+                elif item[2] == "Indian Food":
+                    indian = True
+                elif item[2] == "Seafood":
+                    seafood = True
+            if burger and dessert:
+                img = "images/fries.png"
+                fooditem = "Fries"
+            elif burger and salad:
+                img = "images/veggie.png"
+                fooditem = "Veggie Burger"
+            elif burger and indian:
+                img = "images/chinese.png"
+                fooditem = "Chinese Food"
+            elif burger and seafood:
+                img = "images/taco.png"
+                fooditem = "Fish Tacos"
+            elif dessert and salad:
+                img = "images/boba.png"
+                fooditem = "Boba"
+            elif dessert and indian:
+                img = "images/churros.png"
+                fooditem = "Churros"
+            elif dessert and seafood:
+                img = "images/sushi.png"
+                fooditem = "Sushi"
+            elif salad and indian:
+                img = "images/acai.png"
+                fooditem = "Acai Bowl"
+            elif salad and seafood:
+                img = "images/soup.png"
+                fooditem= "Soup"
+            else:
+                img = "images/poke.png"
+                fooditem = "Poke"
         else:
             img = "images/nuggets.png"
             fooditem = "Chicken Nuggets"
+            #if more than 3 foods tied, display chicken nuggets always
+        #storing data in database
         old_img = img
         check_key = self.request.cookies.get("userKey")
         old_results = OldResults(img = old_img, login_info = check_key)
         old_results.put()
+        #display by logging in dictionary
         food_display_dict = {
             "img": img,
             "fooditem": fooditem,
